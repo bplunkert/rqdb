@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>QDB</title>
+    <title>RQDB</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -16,13 +16,13 @@
         <h1>QDB</h1>
       </div>
       <div id="navbar navbar-nav">
-        <a href="/">Home</a> / 
-        <a href="/latest">Latest</a> /
-        <a href="/quotes">Browse</a> / 
-        <%= link_to "Random", "/random" %> <a href="/random1">&gt;0</a> / 
+        <%= link_to "Home", "/quotes" %> /
+        <%= link_to "Latest", "/latest" %> /
+        <%= link_to "Quotes", "/quotes" %> /
+        <%= link_to "Random", "/random" %> <%= link_to ">0", "/random" %> / 
         <%= link_to "Top", "/top", :class => "navbar-brand" %> / 
-        <a href="/quotes/new">Add Quote</a> /
-        Search /
+        <%= link_to "Add Quote", "/quotes/new" %> /
+        <%= link_to "Search", "/search" %>
         # 
     <%= yield %>
   </body>

@@ -20,7 +20,13 @@ class QuotesController < ApplicationController
   # GET /browse
   # GET /browse.json
   def browse
-    @quotes = Quote.all
+    @quotes = Quote.where(approved: true)
+  end
+
+  # GET /latest
+  # GET /latest.json
+  def latest
+    @quotes = Quote.where(approved: true)
   end
 
   # GET /random
