@@ -4,7 +4,7 @@ class QuotesController < ApplicationController
   # GET /quotes
   # GET /quotes.json
   def index
-    @quotes = Quote.where(approved: true).order(created_at: :desc).page(params[:page])
+    @quotes = Quote.where(approved: true).order(created_at: :asc).page(params[:page])
   end
 
   # GET /quotes/1
