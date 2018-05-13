@@ -66,11 +66,13 @@ class QuotesController < ApplicationController
   # GET /random.json
   def random
     all_quotes = Quote.where(approved: true)
+    all_quote_ids = all_quotes.collect {|quote| quote.id}
     @quotes = []
     max_index = all_quotes.count - 1
     1.upto(10).each do
       random_index = rand(0..max_index)
-      @quotes.push all_quotes[random_index] unless @quotes.include?(all_quotes[random_index])
+      quote = all_quotes.find(all_quote_ids[random_index])
+      @quotes << quote unless @quotes.include?(quote)
     end
   end
 
