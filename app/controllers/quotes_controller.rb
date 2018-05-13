@@ -67,14 +67,10 @@ class QuotesController < ApplicationController
   def random
     all_quotes = Quote.where(approved: true)
     @quotes = []
-    if all_quotes.count <= 10
-      @quotes = Quote.where(approved: true)
-    else
-      while @quotes.count < 10 and @quotes.count < all_quotes.count
-        max_index = all_quotes.count - 1
-        i = rand(0..max_index)
-        @quotes.push(all_quotes[i]) unless @quotes.include?(all_quotes[i])
-      end
+    max_index = all_quotes.count - 1
+    1.upto(10).each do
+      random_index = rand(0..max_index)
+      @quotes.push all_quotes[random_index] unless @quotes.include?(all_quotes[random_index])
     end
   end
 
