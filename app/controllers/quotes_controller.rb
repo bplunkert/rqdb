@@ -65,12 +65,10 @@ class QuotesController < ApplicationController
   # GET /random
   # GET /random.json
   def random
-    max_id = Quote.where(approved: true).last(1).first.id
     @quotes = []
     while @quotes.count < 10 and @quotes.count < Quote.where(approved: true).count
-      i = rand(1..max_id)
       if Quote.exists?(i)
-        quote = Quote.find(i)
+        quote = Quote.where(approved: true).sample
         @quotes << quote unless @quotes.include?(quote)
       end
     end
