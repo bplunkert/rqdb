@@ -88,9 +88,7 @@ class QuotesController < ApplicationController
     quote_ids  = []
     while (quote_ids.count < 10) and (quote_ids.count < all_quotes.count)
       i = rand(1..max_id)
-      if Quote.exists?(id: i)
-      and Quote.approved == true
-      and Quote.score > 0
+      if Quote.exists?(id: i) and Quote.approved == true and Quote.score > 0
         unless quote_ids.include?(i)
           quote_ids << i 
         end  
