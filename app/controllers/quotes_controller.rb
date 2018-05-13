@@ -68,7 +68,7 @@ class QuotesController < ApplicationController
     @quotes = []
     while @quotes.count < 10 and @quotes.count < Quote.where(approved: true).count
       if Quote.exists?(i)
-        @quotes << Quote.where(approved: true).sample unless @quotes.count > 1
+        @quotes << Quote.where(approved: true).sample unless @quotes.include?(quote)
       end
     end
   end
