@@ -69,11 +69,19 @@ class QuotesController < ApplicationController
     all_quote_ids = all_quotes.collect {|quote| quote.id}
     @quotes = []
     max_index = all_quotes.count - 1
-    1.upto(10).each do
-      random_index = rand(0..max_index)
-      quote = all_quotes.find(all_quote_ids[random_index])
-      @quotes << quote unless @quotes.include?(quote)
+
+    if all_quotes.count <= 10
+      @quotes = all_quotes
+    else
+      random_count = 10
+      1.upto(random_count).each do
+        random_index = rand(0..max_index)
+        quote = all_quotes.find(all_quote_ids[random_index])
+        @quotes << quote unless @quotes.include?(quote)
+      end
     end
+
+
   end
 
   # POST /quotes
