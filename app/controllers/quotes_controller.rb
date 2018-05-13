@@ -65,10 +65,7 @@ class QuotesController < ApplicationController
   # GET /random
   # GET /random.json
   def random
-    @quotes = []
-    while @quotes.count < 10 and @quotes.count < Quote.where(approved: true).count
-      @quotes << Quote.where(approved: true).sample unless @quotes.include?(quote)
-    end
+    @quotes = Quote.where(approved: true).order("RANDOM()").last(10).uniq
   end
 
   # POST /quotes
