@@ -1,13 +1,5 @@
 <p id="notice"><%= notice %></p>
 <%= paginate(@quotes) %>
 <% @quotes.each do |quote| %>
-  <p>
-    <strong><%= link_to "##{quote.id}", quote %></strong>
-    +(<%= quote.score %>)-
-    [X]
-    <%= link_to 'Delete', quote, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </p>
-  <p>
-    <pre><%= quote.text %></pre>
-  </p>
+<%= render 'quotes/show' %>
 <% end %>
