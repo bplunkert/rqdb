@@ -4,7 +4,7 @@
 	  <strong><%= link_to "##{quote.id}", quote %></strong>
 	  +(<%= quote.score %>)-
 	  [X]
-	  <%= link_to 'Delete', @quote, method: :delete, data: { confirm: 'Are you sure?' } %>
+	  <%= link_to 'Delete', quote, method: :delete, data: { confirm: 'Are you sure?' } %>
 	</p>
 	<p>
 	  <pre><%= quote.text %></pre>
