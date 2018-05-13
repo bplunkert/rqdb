@@ -56,22 +56,26 @@ class QuotesController < ApplicationController
     @quotes = Quote.where(approved: true).order(created_at: :desc).page(params[:page])
   end
 
+  # GET /top
+  # GET /top.json
+  def top
+    @quotes = Quote.where(approved: true).order(score: :desc).page(params[:page])
+  end
+
   # GET /random
   # GET /random.json
   def random
-    # Generate 25 random IDs
-    quote_ids = 25.times.map{ rand(1..Quote.count) }.uniq
-    # Select any valid quotes from the above IDs
-    @quotes = quote_ids.map{|id| Quote.exists?(id) && Quote.find(id) }.select{|quote| quote unless quote.nil?}
-  end
-
-  # GET /random1
-  # GET /random1.json
-  def random1
-    # Generate 25 random IDs
-    quote_ids = 25.times.map{ rand(1..Quote.count) }.uniq
-    # Select any valid quotes from the above IDs with positive vote counts
-    @quotes = quote_ids.map{|id| Quote.exists?(id) && Quote.find(id) }.select{|quote| quote unless quote.nil?}
+    all_quotes = Quote.where(approved: true)
+    @quotes = []
+    if all_quotes.count <= 10
+      @quotes = Quote.where(approved: true)
+    else
+      while @quotes.count < 10 and @quotes.count < all_quotes.count
+        max_index = all_quotes.count - 1
+        i = rand(0..max_index)
+        @quotes.push(all_quotes[i]) unless @quotes.include?(all_quotes[i])
+      end
+    end
   end
 
   # POST /quotes
