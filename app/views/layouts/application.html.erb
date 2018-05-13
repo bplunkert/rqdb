@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>QDB</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <h1>QDB</h1>
+      </div>
+      <div id="navbar navbar-nav">
+        <a href="/">Home</a> / 
+        <a href="/latest">Latest</a> /
+        <a href="/quotes">Browse</a> / 
+        <%= link_to "Random", "/random" %> <a href="/random1">&gt;0</a> / 
+        <%= link_to "Top", "/top", :class => "navbar-brand" %> / 
+        <a href="/quotes/new">Add Quote</a> /
+        Search /
+        # 
+    <%= yield %>
+  </body>
+</html>
