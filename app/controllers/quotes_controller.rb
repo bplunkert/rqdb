@@ -65,23 +65,15 @@ class QuotesController < ApplicationController
   # GET /random
   # GET /random.json
   def random
-    all_quotes = Quote.where(approved: true)
-    all_quote_ids = all_quotes.collect {|quote| quote.id}
+    max_id = Quote.where(approved: true).last(1).first.id
     @quotes = []
-    max_index = all_quotes.count - 1
-
-    if all_quotes.count <= 10
-      @quotes = all_quotes
-    else
-      random_count = 10
-      1.upto(random_count).each do
-        random_index = rand(0..max_index)
-        quote = all_quotes.find(all_quote_ids[random_index])
+    while @quotes.count < 10 and @quotes.count < Quote.where(approved: true).count
+      i = rand(1..max_id)
+      if Quote.exists?(i)
+        quote = Quote.find(i)
         @quotes << quote unless @quotes.include?(quote)
       end
     end
-
-
   end
 
   # POST /quotes
