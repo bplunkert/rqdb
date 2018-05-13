@@ -65,7 +65,7 @@ class QuotesController < ApplicationController
   # GET /random
   # GET /random.json
   def random
-    @quotes = Quote.where(approved: true).order("RANDOM()").last(10).uniq
+    @quotes = Quote.where(approved: true).distinct.order("RANDOM()").limit(10)
   end
 
   # POST /quotes
