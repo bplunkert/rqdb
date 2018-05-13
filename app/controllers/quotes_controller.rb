@@ -35,7 +35,7 @@ class QuotesController < ApplicationController
     # Generate 25 random IDs
     quote_ids = 25.times.map{ rand(1..Quote.count) }
     # Select any valid quotes from the above IDs
-    @quotes = quote_ids.map{|id| Quote.exists?(id) && Quote.find(id) }.select{|quote| quote unless quote.nil?}
+    @quotes = quote_ids.map{|id| Quote.exists?(id) && Quote.find(id) }
   end
 
   # POST /quotes
