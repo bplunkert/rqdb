@@ -65,6 +65,15 @@ class QuotesController < ApplicationController
     @quotes = quote_ids.map{|id| Quote.exists?(id) && Quote.find(id) }.select{|quote| quote unless quote.nil?}
   end
 
+  # GET /random1
+  # GET /random1.json
+  def random1
+    # Generate 25 random IDs
+    quote_ids = 25.times.map{ rand(1..Quote.count) }.uniq
+    # Select any valid quotes from the above IDs with positive vote counts
+    @quotes = quote_ids.map{|id| Quote.exists?(id) && Quote.find(id) }.select{|quote| quote unless quote.nil?}
+  end
+
   # POST /quotes
   # POST /quotes.json
   def create
