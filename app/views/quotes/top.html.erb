@@ -1,0 +1,5 @@
+<p id="notice"><%= notice %></p>
+<%= paginate(@quotes) %>
+<% @quotes.each do |quote| %>
+<%= render 'quotes/show' %>
+<% end %>
