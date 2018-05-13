@@ -65,7 +65,18 @@ class QuotesController < ApplicationController
   # GET /random
   # GET /random.json
   def random
-    @quotes = Quote.where(approved: true).distinct.order("RANDOM()").limit(10)
+    max_id = Quote.where(approved: true).last(1).first.id
+    @quote_ids = []
+    while (@quote_ids.count < 10) and (@quote_ids.count < Quote.where(approved: true).count)
+      i = rand(1..max_id)
+      if Quote.exists?(id: i)
+        unless @quote_ids.include?(i)
+          @quote_ids << i 
+        end
+      end
+    end
+
+    @quotes = @quote_ids.map{|id| Quote.find(id) if Quote.exists?(id: id)}
   end
 
   # POST /quotes
