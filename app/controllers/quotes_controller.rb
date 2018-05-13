@@ -4,7 +4,7 @@ class QuotesController < ApplicationController
   # GET /quotes
   # GET /quotes.json
   def index
-    @quotes = Quote.where(approved: true).order(created_at: :desc).page(params[:page]).per(3)
+    @quotes = Quote.where(approved: true).order(created_at: :desc).page(params[:page])
   end
 
   # GET /quotes/1
@@ -21,7 +21,7 @@ class QuotesController < ApplicationController
   # GET /latest
   # GET /latest.json
   def latest
-    @quotes = Quote.where(approved: true).order(created_at: :desc).page(params[:page]).per(3)
+    @quotes = Quote.where(approved: true).order(created_at: :desc).page(params[:page])
   end
 
   # GET /random
