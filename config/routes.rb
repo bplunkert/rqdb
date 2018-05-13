@@ -11,4 +11,13 @@ Rails.application.routes.draw do
   get 'search',   to: 'quotes#search'
   get 'top',      to: 'quotes#top'
 
+  resources :quotes do
+    member do
+      get :downvote
+      post :downvote
+      get :upvote
+      post :upvote
+    end
+  end
+
 end

@@ -13,6 +13,38 @@ class QuotesController < ApplicationController
     @quotes = [Quote.find(params[:id])]
   end
 
+  # GET /quotes/1/downvote
+  # POST /quotes/1/downvote
+  def downvote
+    @quote = Quote.find(params[:id])
+    @quote.update(score: @quote.score - 1)
+    respond_to do |format|
+      if @quote.save
+        format.html { redirect_to @quote, notice: 'Quote was successfully downvoted.' }
+        format.json { render :show, status: :ok, location: @quote }
+      else
+        format.html { render :edit }
+        format.json { render json: @quote.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # GET /quotes/1/upvote
+  # POST /quotes/1/upvote
+  def upvote
+    @quote = Quote.find(params[:id])
+    @quote.update(score: @quote.score + 1)
+    respond_to do |format|
+      if @quote.save
+        format.html { redirect_to @quote, notice: 'Quote was successfully upvoted.' }
+        format.json { render :show, status: :ok, location: @quote }
+      else
+        format.html { render :edit }
+        format.json { render json: @quote.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # GET /quotes/new
   def new
     @quote = Quote.new
@@ -49,6 +81,20 @@ class QuotesController < ApplicationController
         format.json { render :show, status: :created, location: @quote }
       else
         format.html { render :new }
+        format.json { render json: @quote.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /quotes/1
+  # PATCH/PUT /quotes/1.json
+  def update
+    respond_to do |format|
+      if @quote.update(quote_params)
+        format.html { redirect_to @quote, notice: 'Quote was successfully updated.' }
+        format.json { render :show, status: :ok, location: @quote }
+      else
+        format.html { render :edit }
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
