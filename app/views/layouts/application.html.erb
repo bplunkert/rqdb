@@ -11,14 +11,13 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-md navbar-dark navbar-custom" role="navigation">
-        <div class="row">
-          <div class="navbar-brand col-4">
-            <a class="navbar-brand" href="#">RQDB</a>
-          </div>
+      <div class="row navbar-blue container">
+        <h1><a href="#">RQDB</a></h1>
+      </div>
+      <nav class="navbar navbar-expand-md navbar-dark" role="navigation">
           <div class="navbar-brand col-8">&nbsp;</div>
         </div>
-        <div class="row">
+        <div class="row navbar-grey container">
           <div class="col-4">&nbsp;</div>          
           <div class="navbar col-8">
             <ul class="navbar-nav">
@@ -51,13 +50,12 @@
         </nav>
       </header>
       <main role="main" class="inner">
-        <div class="col-3">&nbsp; test</div>
+        <div class="col-3">&nbsp;</div>
         <div class="col-6 inner">        
           <%= yield %>
         </div>
         <div class="col-3">&nbsp;</div>
       </main>
     </div>    
->>>>>>> Stashed changes
   </body>
 </html>

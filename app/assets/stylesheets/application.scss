@@ -15,12 +15,45 @@
  */
 @import "bootstrap";
 
+body {
+	font-size: 10pt;
+	font-family: Veranda, sans-serif;
+	color: #000000;
+}
+
+a, a#admin_link, a:link, a:visited{
+	color: #336699;
+}
+a#admin_link:hover, a:hover, a:visited:hover{
+	color: #c08000;
+}
+
 .inner {
 	width: 80%;
 }
 
-.navbar-custom {
+.navbar-blue {
     color: #FFFFFF;
     background-color: #336699;
     width: 80%;
+}
+
+pre.quote_output{
+	font-family: "Courier New", Courier, monospace;
+	padding-bottom: 13pt;
+}
+
+.navbar-grey {
+	background-color: #f0f0f0;
+	text-align: right;
+	font-size: 10pt;
+	font-family: Veranda, sans-serif;
+	color: #000000;
+}
+
+a, a#admin_link, a:link, a:visited{
+	color: #336699;
+}
+a#admin_link:hover, a:hover, a:visited:hover{
+	color: #c08000;
 }
