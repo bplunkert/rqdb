@@ -1,61 +1,58 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>RQDB</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+	<head>
+		<title>RQDB</title>
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	</head>
 
-  <body>
-    <header>
-      <div class="row navbar-blue container">
-        <h1><a href="#">RQDB</a></h1>
-      </div>
-      <nav class="navbar navbar-expand-md navbar-dark" role="navigation">
-          <div class="navbar-brand col-8">&nbsp;</div>
-        </div>
-        <div class="row navbar-grey container">
-          <div class="col-4">&nbsp;</div>          
-          <div class="navbar col-8">
-            <ul class="navbar-nav">
-              <li class="nav-item active">
-                <%= link_to "Home", "/" , class: 'nav-link' %> <span class="sr-only">(current)</span>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Latest", "/latest", class: 'nav-link' %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Browse", "/browse", class: 'nav-link' %>     
-              </li>
-              <li class="nav-item">
-                <%= link_to "Random", "/random", class: 'nav-link' %> <%= link_to ">0", "/random1", class: 'nav-link' %>           
-              </li>
-              <li class="nav-item">
-                <%= link_to "Top", "/top", class: 'nav-link'  %>          
-              </li>
-              <li class="nav-item">
-                <%= link_to "Add Quote", "/quotes/new", class: 'nav-link' %>
-              </li>
-              <li class="nav-item">
-                <%= link_to "Search", "/search", class: 'nav-link' %>            
-              </li>
-              <li class="nav-item">
-                #
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
-      <main role="main" class="inner">
-        <div class="col-3">&nbsp;</div>
-        <div class="col-6 inner">        
-          <%= yield %>
-        </div>
-        <div class="col-3">&nbsp;</div>
-      </main>
-    </div>    
-  </body>
+	<body>
+		<div class="container">
+			<div class="row col-md-8" id="title">
+				<h1>RQDB</h1>
+			</div>
+			<div class="row col-md-8 navbar-right" id="navbar">
+				<nav class="navbar navbar-expand-md navbar-right" role="navigation">
+					<ul class="navbar-nav navbar-right">
+						<li class="nav-item">
+							<%= link_to "Home", "/" , class: 'nav-link' %> <!--<span class="sr-only">(current)</span>-->
+						</li>
+						<li class="nav-item">
+							<%= link_to "Latest", "/latest", class: 'nav-link' %>
+						</li>
+						<li class="nav-item">
+							<%= link_to "Browse", "/browse", class: 'nav-link' %>
+						</li>
+						<li class="nav-item">
+							<div class="nav-link"
+								<%= link_to "Random", "/random" %> <%= link_to ">0", "/random1" %>
+							</div>
+						</li>
+						<li class="nav-item">
+							<%= link_to "Top", "/top", class: 'nav-link'  %>
+						</li>
+						<li class="nav-item">
+							<%= link_to "Add Quote", "/quotes/new", class: 'nav-link' %>
+						</li>
+						<li class="nav-item">
+							<%= link_to "Search", "/search", class: 'nav-link' %>
+						</li>
+						<li class="nav-item">
+							#
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<div class="container">
+				<div class="col-6 quotes">
+					<br />
+					<%= yield %>
+				</div>
+				<div class="col-3">&nbsp;</div>
+			</div>
+		</div>    
+	</body>
 </html>

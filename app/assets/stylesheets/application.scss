@@ -28,14 +28,10 @@ a#admin_link:hover, a:hover, a:visited:hover{
 	color: #c08000;
 }
 
-.inner {
-	width: 80%;
-}
-
-.navbar-blue {
+div#title {
     color: #FFFFFF;
     background-color: #336699;
-    width: 80%;
+    width: 80%;    
 }
 
 pre.quote_output{
@@ -43,7 +39,7 @@ pre.quote_output{
 	padding-bottom: 13pt;
 }
 
-.navbar-grey {
+#navbar {
 	background-color: #f0f0f0;
 	text-align: right;
 	font-size: 10pt;
@@ -51,9 +47,12 @@ pre.quote_output{
 	color: #000000;
 }
 
-a, a#admin_link, a:link, a:visited{
-	color: #336699;
+h1 {
+	color: #fff;
+	font-size: 15pt;
+	font-style: italic;	
 }
-a#admin_link:hover, a:hover, a:visited:hover{
-	color: #c08000;
+
+.quotes {
+	text-align: left;
 }
