@@ -68,34 +68,30 @@ class QuotesController < ApplicationController
     all_quotes = Quote.where(approved: true)
     max_id     = all_quotes.last(1).first.id
     quote_ids  = []
+    @quotes    = []
     while (quote_ids.count < 10) and (quote_ids.count < all_quotes.count)
-      i = rand(1..max_id)
-      if Quote.exists?(id: i) and Quote.approved == true
-        unless quote_ids.include?(i)
-          quote_ids << i 
-        end
+      quote = all_quotes.sample(1).first
+      unless quote_ids.include?(quote.id) or quote.approved != true
+        quote_ids << quote.id
+        @quotes << quote
       end
     end
-
-    @quotes = quote_ids.map{|id| Quote.find(id) if Quote.exists?(id: id)}
   end
 
   # GET /random1
   # GET /random1.json
   def random1
-    all_quotes = Quote.where(approved: true)
+    all_quotes = Quote.where(approved: true).where('"quotes"."score" > 0')
     max_id     = all_quotes.last(1).first.id
     quote_ids  = []
+    @quotes    = []
     while (quote_ids.count < 10) and (quote_ids.count < all_quotes.count)
-      i = rand(1..max_id)
-      if Quote.exists?(id: i) and Quote.approved == true and Quote.score > 0
-        unless quote_ids.include?(i)
-          quote_ids << i 
-        end  
+      quote = all_quotes.sample(1).first
+      unless quote_ids.include?(quote.id) or quote.approved != true# or quote.score <= 0
+        quote_ids << quote.id
+        @quotes << quote
       end
     end
-
-    @quotes = quote_ids.map{|id| Quote.find(id) if Quote.exists?(id: id)}
   end
 
 
