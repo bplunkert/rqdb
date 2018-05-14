@@ -28,10 +28,13 @@ a#admin_link:hover, a:hover, a:visited:hover{
 	color: #c08000;
 }
 
-div#title {
+#title, #versionbar {
     color: #FFFFFF;
     background-color: #336699;
-    width: 80%;    
+}
+
+#versionbar {
+	text-align: right;
 }
 
 pre.quote_output{
