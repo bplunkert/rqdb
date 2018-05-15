@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
 <%= paginate(@quotes) %>
-<% @quotes.each do |quote| %>
-<%= render 'quotes/show' %>
-<% end %>
+<% @quotes.each do |quote| -%>
+<%= render 'quotes/show', :quote => quote %>
+<% end -%>

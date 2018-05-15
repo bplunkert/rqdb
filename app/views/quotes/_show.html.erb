@@ -1,11 +1,6 @@
-<% @quotes.each do |quote| %>
-	<p>
-		<strong><%= link_to "##{quote.id}", quote %></strong>
-		<a href="/quotes/<%= quote.id %>/upvote">+</a>(<%= quote.score %>)<a href="/quotes/<%= quote.id %>/downvote">-</a>
-		[X]
-		<%= link_to 'Delete', quote, method: :delete, data: { confirm: 'Are you sure?' } %>
-	</p>
-	<p>
-		<pre class="quote_output"><%= quote.text %></pre>
-	</p>
-<% end %>
+<strong><%= link_to "##{quote.id}", quote %></strong>
+<a href="/quotes/<%= quote.id %>/upvote">+</a>(<%= quote.score %>)<a href="/quotes/<%= quote.id %>/downvote">-</a>
+[X]
+<%= link_to 'Delete', quote, method: :delete, data: { confirm: 'Are you sure?' } %>
+<br />
+<pre class="quote_output"><%= quote.text %></pre>
