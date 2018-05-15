@@ -45,6 +45,22 @@ class QuotesController < ApplicationController
     end
   end
 
+  # GET /quotes/1/flag
+  # POST /quotes/1/flag
+  def flag
+    @quote = Quote.find(params[:id])
+    @quote.update(flagged: true)
+    respond_to do |format|
+      if @quote.save
+        format.html { redirect_to @quote, notice: 'Quote was successfully flagged.' }
+        format.json { render :show, status: :ok, location: @quote }
+      else
+        format.html { render :edit }
+        format.json { render json: @quote.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # GET /quotes/new
   def new
     @quote = Quote.new

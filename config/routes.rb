@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       post :downvote
       get :upvote
       post :upvote
+      get :flag
+      post :flag
     end
   end
 
