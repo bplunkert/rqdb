@@ -110,6 +110,11 @@ class QuotesController < ApplicationController
     end
   end
 
+  # GET /search
+  # GET /search.json
+  def search
+    @quote = Quote.find(params[:quote_id])
+  end
 
   # POST /quotes
   # POST /quotes.json

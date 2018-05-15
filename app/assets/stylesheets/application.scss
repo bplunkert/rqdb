@@ -50,7 +50,11 @@ pre.quote_output{
 	font-family: Veranda, sans-serif;
 	color: #000000;
 	float: right;
+	padding-bottom: 1px;	
+	padding-top: 1px;
+	max-height: 15pt;
 }
+
 
 h1 {
 	color: #fff;
@@ -60,4 +64,16 @@ h1 {
 
 .quotes {
 	text-align: left;
+}
+
+.pagination > li > a:active,
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:active,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+    z-index: 3;
+    color: #23527c;
+    background-color: #336699;
+    border-color: #ddd;
 }
