@@ -1,2 +1,4 @@
 <p id="notice"><%= notice %></p>
-<%= render 'quotes/show' %>
+<% @quotes.each do |quote| -%>
+<%= render 'quotes/show', :quote => quote %>
+<% end -%>
