@@ -10,32 +10,33 @@
 	</head>
 
 	<body>
-		<div class="row container">
-			<div class="col-md-2"></div>
-			<div class="row col-md-8" id="title">
-				<h1>RQDB</h1>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-10" id="title">
+					<h1>RQDB</h1>
+				</div>
+				<div class="col-md-1"></div>			
 			</div>
-			<div class="col-md-2"></div>			
-		</div>
-		<div class="row container">
-			<%= render 'quotes/navbar' %>
-		</div>
-		<div class="row container">
-			<div class="col-md-2"></div>			
-			<div class="col-md-8 quotes">
-				<%= yield %>
+			<div class="row">
+				<%= render 'quotes/navbar' %>
 			</div>
-			<div class="col-md-2"></div>			
-		</div>
-		<div class="row container">
-			<%= render 'quotes/navbar' %>
-		</div>
-		<div class="row container">
-			<div class="col-md-2"></div>						
-			<div class="row col-md-8" id="versionbar">
-				RQDB Version: pre-alpha
+			<div class="row">
+				<div class="col-md-1"></div>			
+				<div class="col-md-10 quotes">
+					<%= yield %>
+				</div>
+				<div class="col-md-1"></div>			
 			</div>
-			<div class="col-md-2"></div>
-		</div>
+			<div class="row">
+				<%= render 'quotes/navbar' %>
+			</div>
+			<div class="row">
+				<div class="col-md-1"></div>						
+				<div class="col-md-10" id="versionbar">
+					RQDB Version: pre-alpha
+				</div>
+				<div class="col-md-1"></div>
+			</div>
 	</body>
 </html>

@@ -43,12 +43,13 @@ pre.quote_output{
 	padding-bottom: 13pt;
 }
 
-#navbar {
+.navbar, #navbar {
 	background-color: #f0f0f0;
 	text-align: right;
 	font-size: 10pt;
 	font-family: Veranda, sans-serif;
 	color: #000000;
+	float: right;
 }
 
 h1 {
