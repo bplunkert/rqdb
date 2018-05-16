@@ -45,6 +45,24 @@ class QuotesController < ApplicationController
     end
   end
 
+  # GET /quotes/1/approve
+  # POST /quotes/1/approve
+  def approve
+    authenticate_user!
+    @quote = Quote.find(params[:id])
+    @quote.update(approved: true)
+    respond_to do |format|
+      if @quote.save
+        format.html { redirect_to @quote, notice: 'Quote was successfully approved.' }
+        format.json { render :show, status: :ok, location: @quote }
+      else
+        format.html { render :edit }
+        format.json { render json: @quote.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
+
   # GET /quotes/1/flag
   # POST /quotes/1/flag
   def flag
