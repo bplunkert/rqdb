@@ -1,4 +1,4 @@
 Hello, admin.
 <br />
-<p>You have <%= @flagged_quotes.count %> flagged quotes pending review.</p>
-<p> You have <%= @submitted_quotes.count %> submitted quotes pending review.</p>
+<p>You have <%= @flagged_quotes.count %> flagged quote<%= 's' if @flagged_quotes.count > 1 %> pending review.</p>
+<p> You have <%= @submitted_quotes.count %> submitted quote<%= 's' if @submitted_quotes.count > 1 %> pending review.</p>
