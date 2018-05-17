@@ -13,6 +13,11 @@ class QuotesController < ApplicationController
     @quotes = [Quote.find(params[:id])]
   end
 
+  # GET /quotes/new
+  def new
+    @quote = Quote.new
+  end
+
   # GET /quotes/1/downvote
   # POST /quotes/1/downvote
   def downvote
@@ -82,7 +87,7 @@ class QuotesController < ApplicationController
   # GET /quotes/1/unflag
   # POST /quotes/1/unflag
   def unflag
-    authenticate_user!
+    authenticate_user! unless user_signed_in?
     @quote = Quote.find(params[:id])
     @quote.update(flagged: false)
     respond_to do |format|

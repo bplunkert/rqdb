@@ -3,10 +3,10 @@
 <% if user_signed_in? -%>
 	<%= link_to 'Delete', quote, method: :delete, data: { confirm: 'Are you sure you want to delete this quote?' } %>
 	<% if quote.flagged == true -%>
-	  <%= link_to 'Unflag', quote, method: :unflag, data: { confirm: 'Are you sure you want to unflag this quote?' } %>
+	  <%= link_to 'Unflag', "/quotes/#{quote.id}/unflag", method: :get, data: { confirm: 'Are you sure you want to unflag this quote?' } %>
   <% end %>
 	<% if quote.approved == false -%>
-	  <%= link_to 'Approve', quote, method: :approve, data: { confirm: 'Are you sure you want to approve this quote?' } %>
+	  <%= link_to 'Approve', "/quotes/#{quote.id}/approve", method: :get, data: { confirm: 'Are you sure you want to approve this quote?' } %>
 	<% end %>
 <% else -%>
 	<%= link_to '[X]', "/quotes/#{quote.id}/flag", method: :get, data: { confirm: 'Are you sure you want to flag this quote for review?' } %>
