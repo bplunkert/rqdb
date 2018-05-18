@@ -6,17 +6,15 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  get 'admin',        to: 'admin#index'
-  get 'admin/users',  to: 'admin#users'
-  post 'admin/users', to: 'admin#create_user'
-  get 'browse',       to: 'quotes#index'
-  get 'flagged',      to: 'admin#flagged'
-  get 'latest',       to: 'quotes#latest'
-  get 'random',       to: 'quotes#random'
-  get 'random1',      to: 'quotes#random1'
-  get 'search',       to: 'quotes#search'
-  get 'submitted',    to: 'admin#submitted'
-  get 'top',          to: 'quotes#top'
+  get 'admin',     to: 'admin#index'
+  get 'browse',    to: 'quotes#index'
+  get 'flagged',   to: 'admin#flagged'
+  get 'latest',    to: 'quotes#latest'
+  get 'random',    to: 'quotes#random'
+  get 'random1',   to: 'quotes#random1'
+  get 'search',    to: 'quotes#search'
+  get 'submitted', to: 'admin#submitted'
+  get 'top',       to: 'quotes#top'
 
   resources :quotes do
     member do
