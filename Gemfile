@@ -67,3 +67,9 @@ gem 'jquery-rails'
 
 # Use kaminari gem for pagination
 gem 'kaminari'
+<<<<<<< HEAD
+=======
+
+# Use devise gem for authentication
+gem 'devise'
+>>>>>>> admin
