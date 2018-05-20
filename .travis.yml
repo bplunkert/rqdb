@@ -1,7 +1,8 @@
 language: ruby
  cache:
-    directories:
-     - /home/travis/.rvm/
+  bundler: true  
+  directories:
+    - /home/travis/.rvm/
 
 install:
   - bundle install --path vendor/bundle
