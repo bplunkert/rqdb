@@ -7,3 +7,4 @@ one:
 two:
   text: MyString2
   score: 3
+  flagged: true
