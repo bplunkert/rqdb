@@ -31,11 +31,16 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to quote_url(@quote)
   end
 
-  test "should destroy quote" do
+  test "authenticated user should destroy quote" do
     sign_in users(:one)
     assert_difference('Quote.count', -1) do
       delete quote_url(@quote)
     end
+  end
 
+  test "unauthenticated user should not destroy quote" do
+    assert_no_difference('Quote.count') do
+      delete quote_url(@quote)      
+    end
   end
 end
