@@ -1,4 +1,5 @@
-# README
+# RQDB: Rash Quote Database
+[![Build Status](https://travis-ci.org/bplunkert/rqdb.svg?branch=master)](https://travis-ci.org/bplunkert/rqdb)
 
 Setup:
 * RVM
@@ -7,4 +8,4 @@ Setup:
 * bundle exec rake db:migrate
 * bundle exec rails server
 
-Browse to http://localhost:3000
+Browse to http://localhost:3000	
