@@ -27,6 +27,11 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "search should return matching quotes" do
+    results = Quote.search('MyString1')
+    assert results.count == 1
+  end
+
   test "should update quote" do
     patch quote_url(@quote), params: { quote: { score: @quote.score, text: @quote.text } }
     assert_redirected_to quote_url(@quote)
