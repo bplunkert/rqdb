@@ -19,17 +19,10 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Quote.count') do
       post quotes_url, params: { quote: { score: @quote.score, text: @quote.text } }
     end
-
-    assert_redirected_to quote_url(Quote.last)
   end
 
   test "should show quote" do
     get quote_url(@quote)
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_quote_url(@quote)
     assert_response :success
   end
 
@@ -39,10 +32,10 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy quote" do
+    sign_in users(:one)
     assert_difference('Quote.count', -1) do
       delete quote_url(@quote)
     end
 
-    assert_redirected_to quotes_url
   end
 end
