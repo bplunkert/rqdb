@@ -1,0 +1,38 @@
+<h6>Users</h6>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Sign In Count</th>
+      <th>Current Sign In Time</th>
+      <th>Last Sign In</th>
+      <th>Current IP Address</th>
+      <th>Previous IP Address</th>
+      <th>Creation Date</th>
+      <th>Update Date</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td><%= user.sign_in_count %></td>
+        <td><%= user.current_sign_in_at %></td>
+        <td><%= user.last_sign_in_at %></td>
+        <td><%= user.current_sign_in_ip %></td>
+        <td><%= user.last_sign_in_ip %></td>
+        <td><%= user.created_at %></td>
+        <td><%= user.updated_at %></td>
+        <td><%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<h6>New User</h6>
+<%= render 'form', user: @user %>

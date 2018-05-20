@@ -14,22 +14,29 @@
 			<div class="row">
 				<div class="col-md-1"></div>
 				<div class="col-md-10" id="title">
-					<h1>RQDB</h1>
+					RQDB <%= link_to 'Admin', '/users/sign_in', class: 'adminlink' %>
 				</div>
 				<div class="col-md-1"></div>			
 			</div>
 			<div class="row">
-				<%= render 'quotes/navbar' %>
+				<%= render 'layouts/navbar' %>
 			</div>
+			<% if user_signed_in? -%>
+				<div class="row">
+					<%= render 'admin/navbar' %>
+				</div>
+			<% end -%>
 			<div class="row">
 				<div class="col-md-1"></div>			
 				<div class="col-md-10 quotes">
+							<% if notice %><p class="notice"><%= notice %></p><% end %>
+							<% if alert %><p class="alert"><%= alert %></p><% end %>
 					<%= yield %>
 				</div>
 				<div class="col-md-1"></div>			
 			</div>
 			<div class="row">
-				<%= render 'quotes/navbar' %>
+				<%= render 'layouts/navbar' %>
 			</div>
 			<div class="row">
 				<div class="col-md-1"></div>						

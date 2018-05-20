@@ -13,6 +13,11 @@ class QuotesController < ApplicationController
     @quotes = [Quote.find(params[:id])]
   end
 
+  # GET /quotes/new
+  def new
+    @quote = Quote.new
+  end
+
   # GET /quotes/1/downvote
   # POST /quotes/1/downvote
   def downvote
@@ -45,6 +50,24 @@ class QuotesController < ApplicationController
     end
   end
 
+  # GET /quotes/1/approve
+  # POST /quotes/1/approve
+  def approve
+    authenticate_user!
+    @quote = Quote.find(params[:id])
+    @quote.update(approved: true)
+    respond_to do |format|
+      if @quote.save
+        format.html { redirect_to @quote, notice: 'Quote was successfully approved.' }
+        format.json { render :show, status: :ok, location: @quote }
+      else
+        format.html { render :edit }
+        format.json { render json: @quote.errors, status: :unprocessable_entity }
+      end
+    end
+
+  end
+
   # GET /quotes/1/flag
   # POST /quotes/1/flag
   def flag
@@ -61,9 +84,21 @@ class QuotesController < ApplicationController
     end
   end
 
-  # GET /quotes/new
-  def new
-    @quote = Quote.new
+  # GET /quotes/1/unflag
+  # POST /quotes/1/unflag
+  def unflag
+    authenticate_user! unless user_signed_in?
+    @quote = Quote.find(params[:id])
+    @quote.update(flagged: false)
+    respond_to do |format|
+      if @quote.save
+        format.html { redirect_to @quote, notice: 'Quote was successfully unflagged.' }
+        format.json { render :show, status: :ok, location: @quote }
+      else
+        format.html { render :edit }
+        format.json { render json: @quote.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # GET /latest
@@ -71,6 +106,12 @@ class QuotesController < ApplicationController
   def latest
     @quotes = Quote.where(approved: true).order(created_at: :desc).page(params[:page])
   end
+
+  # GET /quotes/flagged
+  # GET /quotes/flagged.json
+  def submitted
+    @quotes = Quote.where(approved: false).order(created_at: :asc).page(params[:page])
+  end  
 
   # GET /top
   # GET /top.json
@@ -154,9 +195,10 @@ class QuotesController < ApplicationController
   # DELETE /quotes/1
   # DELETE /quotes/1.json
   def destroy
+    authenticate_user!
     @quote.destroy
     respond_to do |format|
-      format.html { redirect_to quotes_url, notice: 'Quote was successfully destroyed.' }
+      format.html { redirect_to quotes_url, notice: 'Quote was successfully deleted.' }
       format.json { head :no_content }
     end
   end
