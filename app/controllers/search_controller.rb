@@ -4,6 +4,12 @@ class SearchController < ApplicationController
   def index
   	@search = Search.new
     @quotes = Quote.where('text LIKE ?', "%#{params[:pattern]}%").page(params[:page])
+
+    unless params[:pattern].nil? or params[:pattern] == ''
+      @quotes = Quote.where('text LIKE ?', "%#{params[:pattern]}%").page(params[:page])
+    else
+      @quotes = Quote.where(id: nil).page(params[:page])
+    end
   end
 
   def new
