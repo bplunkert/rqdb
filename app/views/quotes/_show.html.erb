@@ -1,4 +1,4 @@
-<strong><%= link_to "##{quote.id}", quote %></strong>
+<strong><%= link_to "##{quote.id}", quote, id: quote.id %></strong>
 <%= link_to '+', "/quotes/#{quote.id}/upvote", method: :get, data: { confirm: 'Are you sure you want to upvote?' } %>(<%= quote.score %>)<%= link_to '-', "/quotes/#{quote.id}/downvote", method: :get, data: { confirm: 'Are you sure you want to downvote?' } %>
 <% if user_signed_in? -%>
 	<%= link_to 'Delete', quote, method: :delete, data: { confirm: 'Are you sure you want to delete this quote?' } %>
