@@ -11,5 +11,5 @@ end
 
 
 class ActionDispatch::IntegrationTest
-	include Devise::Test::IntegrationHelpers	
+  include Devise::Test::IntegrationHelpers  
 end

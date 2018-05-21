@@ -27,15 +27,6 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "search should return matching quotes" do
-    post '/search', params: { search_pattern: "MyString1" }
-    assert_response :success
-
-    #assert_select 
-    #assert_select "p", "Title:\n  can create"
-
-  end
-
   test "should update quote" do
     patch quote_url(@quote), params: { quote: { score: @quote.score, text: @quote.text } }
     assert_redirected_to quote_url(@quote)
