@@ -3,14 +3,13 @@
 
 Rash/Rails Quote Database is a simple web application for publishing, sharing, and ranking quotes. It's a ground-up rebuild of the [Rash Quote Management System (RQMS)](http://rqms.sourceforge.net), originally written in PHP by Tom Cuchta. RQDB is written in Ruby on Rails instead of PHP and does not share any common code with the original version.
 
-Installing depedendencies:
-* Install [RVM](https://rvm.io) and Ruby 2.5.1:
-```
-curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-curl -sSL https://get.rvm.io | bash -s stable --ruby=2.5.1
-```
-* Install gem dependencies:
-```bundle install```
+Depedendencies:
+Install [RVM](https://rvm.io) and Ruby 2.5.1:
+* * ```curl -sSL https://rvm.io/mpapis.asc | gpg --import -```
+* * ```curl -sSL https://get.rvm.io | bash -s stable --ruby=2.5.1```
+
+Install gem dependencies:
+* ```bundle install```
 
 Installation:
 * ```bundle exec rake db:migrate```
@@ -18,4 +17,8 @@ Installation:
 
 Start the service:
 * ```bundle exec rails server```
-* Browse to http://localhost:3000	
+
+Login:
+* Browse to http://localhost:3000
+* Default username: admin@admin.admin
+* Default password: password
