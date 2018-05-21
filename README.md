@@ -1,5 +1,5 @@
 # RQDB: Rash Quote Database
-[![Build Status](https://travis-ci.org/bplunkert/rqdb.svg?branch=master)](https://travis-ci.org/bplunkert/rqdb)
+[![Build Status](https://travis-ci.org/bplunkert/rqdb.svg?branch=development)](https://travis-ci.org/bplunkert/rqdb)
 
 Setup:
 * RVM
