@@ -8,8 +8,13 @@ class SearchesControllerTest < ActionDispatch::IntegrationTest
   test "search should return matching quotes" do
     post '/search', params: { search: { search_pattern: 'MyString1' } }
     assert_response :success
+    assert_select "pre", {:class => "quote_output", :count=>1}
 
-  assert_select "a", {:count=>1, :text=>"#1"}, "Did not find matching quote in search results"
+  end
 
+  test "search should not return nonmatching quotes" do
+    post '/search', params: { search: { search_pattern: 'BogusStringWithNoMatchingQuotes' } }
+    assert_response :success
+    assert_select "pre", {:class => "quote_output", :count=>0}
   end
 end
