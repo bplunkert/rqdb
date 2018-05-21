@@ -1,12 +1,12 @@
+# For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 Rails.application.routes.draw do
-devise_for :users, controllers: { registrations: 'users/registrations' }
-scope "/admin" do
-  resources :users
-end
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+  scope "/admin" do
+    resources :users
+  end
 
   root to: 'quotes#index'
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get 'admin',        to: 'admin#index'
   get 'browse',       to: 'quotes#index'
@@ -15,6 +15,7 @@ end
   get 'random',       to: 'quotes#random'
   get 'random1',      to: 'quotes#random1'
   get 'search',       to: 'quotes#search'
+  post '/search',     to: 'search#index'  
   get 'submitted',    to: 'admin#submitted'
   get 'top',          to: 'quotes#top'
 
@@ -30,6 +31,8 @@ end
       post :unflag
       get :approve
       post :approve
+      get :search
+      post :search
     end
   end
 

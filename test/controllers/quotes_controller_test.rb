@@ -28,8 +28,12 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "search should return matching quotes" do
-    results = Quote.search('MyString1')
-    assert results.count == 1
+    post '/search', params: { search_pattern: "MyString1" }
+    assert_response :success
+
+    #assert_select 
+    #assert_select "p", "Title:\n  can create"
+
   end
 
   test "should update quote" do

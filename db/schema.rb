@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_15_193424) do
+ActiveRecord::Schema.define(version: 2018_05_21_013950) do
 
   create_table "quotes", force: :cascade do |t|
     t.string "text", null: false
@@ -19,6 +19,12 @@ ActiveRecord::Schema.define(version: 2018_05_15_193424) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "flagged"
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "search_pattern"
   end
 
   create_table "users", force: :cascade do |t|

@@ -18,6 +18,12 @@ class QuotesController < ApplicationController
     @quote = Quote.new
   end
 
+  # GET /quotes/search
+  # POST /quotes/search
+  def search
+    @search = Search.new
+  end
+
   # GET /quotes/1/downvote
   # POST /quotes/1/downvote
   def downvote
@@ -151,12 +157,6 @@ class QuotesController < ApplicationController
     end
   end
 
-  # GET /search
-  # GET /search.json
-  def search
-    @quote = Quote.find(params[:quote_id])
-  end
-
   # POST /quotes
   # POST /quotes.json
   def create
@@ -211,6 +211,6 @@ class QuotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quote_params
-      params.require(:quote).permit(:text, :score)
+      params.require(:quote).permit(:text, :score, :search_pattern)
     end
 end
