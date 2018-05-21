@@ -8,7 +8,7 @@ Install [RVM](https://rvm.io) and Ruby 2.5.1:
 * * ```curl -sSL https://rvm.io/mpapis.asc | gpg --import -```
 * * ```curl -sSL https://get.rvm.io | bash -s stable --ruby=2.5.1```
 
-Install gem dependencies:
+Install bundled ruby gems:
 * ```bundle install```
 
 Installation:
