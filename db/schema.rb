@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2018_05_21_013950) do
   create_table "searches", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "search_pattern"
+    t.string "pattern"
   end
 
   create_table "users", force: :cascade do |t|

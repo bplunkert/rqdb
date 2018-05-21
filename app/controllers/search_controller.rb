@@ -3,7 +3,7 @@ class SearchController < ApplicationController
   # POST /search
   def index
   	@search = Search.new
-    @quotes = Quote.where('text LIKE ?', "%#{params[:search_pattern]}%").page(params[:page])
+    @quotes = Quote.where('text LIKE ?', "%#{params[:pattern]}%").page(params[:page])
   end
 
   def new
@@ -18,6 +18,6 @@ class SearchController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def search_params
-      params.require(:search).permit(:search_pattern)
+      params.require(:search).permit(:pattern)
     end
 end
