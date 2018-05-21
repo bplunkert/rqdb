@@ -9,7 +9,6 @@ class SearchesControllerTest < ActionDispatch::IntegrationTest
     post '/search', params: { pattern: 'MyString1' }
     assert_response :success
     assert_select "pre", {:class => "quote_output", :count=>1}
-
   end
 
   test "search should not return nonmatching quotes" do
