@@ -17,4 +17,10 @@ class SearchesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "pre", {:class => "quote_output", :count=>0}
   end
+
+  test "empty search pattern should not return quotes" do
+    post '/search', params: { search: { search_pattern: '' } }
+    assert_response :success
+    assert_select "pre", {:class => "quote_output", :count=>0}
+  end
 end
