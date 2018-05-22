@@ -72,4 +72,14 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success    
   end
 
+  test 'unauthenticated user should not update quote' do
+    assert false
+    assert_redirected_to '/users/sign_in'
+  end
+  
+  test 'authenticated user should update quote' do
+    sign_in users(:one)
+    assert false
+  end
+
 end
