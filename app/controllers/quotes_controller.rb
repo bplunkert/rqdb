@@ -135,14 +135,21 @@ class QuotesController < ApplicationController
   # GET /random.json
   def random
     all_quotes = Quote.where(approved: true)
-    max_id     = all_quotes.last(1).first.id
-    quote_ids  = []
     @quotes    = []
-    while (quote_ids.count < 10) and (quote_ids.count < all_quotes.count)
-      quote = all_quotes.sample(1).first
-      unless quote_ids.include?(quote.id) or quote.approved != true
-        quote_ids << quote.id
-        @quotes << quote
+    if all_quotes.count == 0
+      response do
+        format.html { render :random, notice: 'There are no quotes in the database.' }
+        format.json { render :random, errors: 'There are no quotes in the database.' }
+      end
+    else
+      max_id     = all_quotes.last(1).first.id
+      quote_ids  = []
+      while (quote_ids.count < 10) and (quote_ids.count < all_quotes.count)
+        quote = all_quotes.sample(1).first
+        unless quote_ids.include?(quote.id) or quote.approved != true
+          quote_ids << quote.id
+          @quotes << quote
+        end
       end
     end
   end
