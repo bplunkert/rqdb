@@ -1,5 +1,6 @@
 class QuotesController < ApplicationController
-  before_action :set_quote, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show, :new, :create, :search, :downvote, :upvote, :flag, :latest, :random, :random1, :bottom, :top ]
+  before_action :set_quote, only: [:show, :update, :destroy]
 
   # GET /quotes
   # GET /quotes.json
@@ -34,7 +35,7 @@ class QuotesController < ApplicationController
         format.html { redirect_to @quote, notice: 'Quote was successfully downvoted.' }
         format.json { render :show, status: :ok, location: @quote }
       else
-        format.html { render :edit }
+        format.html { render :show }
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
@@ -50,7 +51,7 @@ class QuotesController < ApplicationController
         format.html { redirect_to @quote, notice: 'Quote was successfully upvoted.' }
         format.json { render :show, status: :ok, location: @quote }
       else
-        format.html { render :edit }
+        format.html { render :show }
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
@@ -59,7 +60,6 @@ class QuotesController < ApplicationController
   # GET /quotes/1/approve
   # POST /quotes/1/approve
   def approve
-    authenticate_user!
     @quote = Quote.find(params[:id])
     @quote.update(approved: true)
     respond_to do |format|
@@ -67,7 +67,7 @@ class QuotesController < ApplicationController
         format.html { redirect_to @quote, notice: 'Quote was successfully approved.' }
         format.json { render :show, status: :ok, location: @quote }
       else
-        format.html { render :edit }
+        format.html { render :show }
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
@@ -84,16 +84,14 @@ class QuotesController < ApplicationController
         format.html { redirect_to @quote, notice: 'Quote was successfully flagged.' }
         format.json { render :show, status: :ok, location: @quote }
       else
-        format.html { render :edit }
+        format.html { render :show }
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
   end
 
   # GET /quotes/1/unflag
-  # POST /quotes/1/unflag
   def unflag
-    authenticate_user! unless user_signed_in?
     @quote = Quote.find(params[:id])
     @quote.update(flagged: false)
     respond_to do |format|
@@ -101,7 +99,7 @@ class QuotesController < ApplicationController
         format.html { redirect_to @quote, notice: 'Quote was successfully unflagged.' }
         format.json { render :show, status: :ok, location: @quote }
       else
-        format.html { render :edit }
+        format.html { render :show }
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
@@ -199,7 +197,7 @@ class QuotesController < ApplicationController
         format.html { redirect_to @quote, notice: 'Quote was successfully updated.' }
         format.json { render :show, status: :ok, location: @quote }
       else
-        format.html { render :edit }
+        format.html { render :show }
         format.json { render json: @quote.errors, status: :unprocessable_entity }
       end
     end
@@ -208,7 +206,6 @@ class QuotesController < ApplicationController
   # DELETE /quotes/1
   # DELETE /quotes/1.json
   def destroy
-    authenticate_user!
     @quote.destroy
     respond_to do |format|
       format.html { redirect_to quotes_url, notice: 'Quote was successfully deleted.' }
