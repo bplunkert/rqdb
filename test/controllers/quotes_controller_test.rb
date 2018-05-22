@@ -28,11 +28,6 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should update quote' do
-    patch quote_url(@quote), params: { quote: { score: @quote.score, text: @quote.text } }
-    assert_redirected_to quote_url(@quote)
-  end
-
   test 'authenticated user should destroy quote' do
     sign_in users(:one)
     assert_difference('Quote.count', -1) do
@@ -44,7 +39,7 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference('Quote.count') do
       delete quote_url(@quote)
     end
-    assert_redirected_to '/users/sign_in'    
+    assert_redirected_to '/users/sign_in'
   end
 
   test 'unauthenticated user should not unflag quote' do
@@ -69,17 +64,22 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
 
     get '/random'
     assert_select "pre", {:class => "quote_output", :count=>0}
-    assert_response :success    
+    assert_response :success
   end
 
   test 'unauthenticated user should not update quote' do
-    assert false
+    assert_no_changes('Quote.find(@quote.id).text') do
+      patch quote_url(@quote), params: { quote: {id: 1, text: 'Modified text'} }
+    end
     assert_redirected_to '/users/sign_in'
   end
-  
+
   test 'authenticated user should update quote' do
     sign_in users(:one)
-    assert false
+    assert_changes('Quote.find(@quote.id).text') do
+      patch quote_url(@quote), params: { quote: {id: 1,  text: 'Modified text'} }
+    end
+    assert_redirected_to quote_url(@quote)
   end
 
 end
