@@ -13,7 +13,9 @@
   <div class="announcements col-sm-6">
     <%= paginate(@announcements) %>
     <% @announcements.each do |announcement| -%>
-      <%= render 'announcements/show', :announcement => announcement %>
+      <div class="announcement row">
+        <%= render 'announcements/show', :announcement => announcement %>
+      </div>
     <% end %>
   </div>
 </div>
