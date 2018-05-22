@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root to: 'announcements#index'
 
   get 'admin',        to: 'admin#index'
+  get 'bottom',       to: 'quotes#bottom'  
   get 'browse',       to: 'quotes#index'
   get 'flagged',      to: 'admin#flagged'
   get 'latest',       to: 'quotes#latest'
@@ -18,22 +19,16 @@ Rails.application.routes.draw do
   post '/search',     to: 'search#index'  
   get 'submitted',    to: 'admin#submitted'
   get 'top',          to: 'quotes#top'
-  get 'bottom',       to: 'quotes#bottom'
 
   resources :announcements
 
   resources :quotes do
     member do
       get :downvote
-      post :downvote
       get :upvote
-      post :upvote
       get :flag
-      post :flag
       get :unflag
-      post :unflag
       get :approve
-      post :approve
       get :search
       post :search
     end
