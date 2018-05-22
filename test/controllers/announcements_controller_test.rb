@@ -29,7 +29,7 @@ class AnnouncementsControllerTest < ActionDispatch::IntegrationTest
 
   test 'authenticated user should not create blank announcement' do
     sign_in users(:one)
-    assert_no_changes('Announcement.count') do
+    assert_no_difference('Announcement.count') do
       post announcements_url, params: { announcement: { text: '' } }
     end
   end
@@ -49,20 +49,17 @@ class AnnouncementsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'unauthenticated user should not update announcement' do
-    assert_no_changes('@announcement.text') do
-      @modified_announcement = @announcement
-      @modified_announcement.text = 'Modified text'
-      put announcement_url(@announcement), params: { announcement: @modified_announcement }
+    assert_no_changes('Announcement.find(@announcement.id).text') do
+      patch announcement_url(@announcement), params: { announcement: {id: 1, text: 'Modified text'} }
     end
     assert_redirected_to '/users/sign_in'
   end
 
   test 'authenticated user should update announcement' do
     sign_in users(:one)    
-    assert_changes('@announcement.text') do
-      @modified_announcement = @announcement
-      @modified_announcement.text = 'Modified text'
-      put announcement_url(@announcement), params: { announcement: @modified_announcement }
+    assert_changes('Announcement.find(@announcement.id).text') do
+      patch announcement_url(@announcement), params: { announcement: {id: 1,  text: 'Modified text'} }
     end
+    assert_redirected_to announcements_url
   end
 end
