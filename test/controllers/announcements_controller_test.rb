@@ -13,25 +13,24 @@ class AnnouncementsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'div.announcement', {:count=>2}
   end
 
-
-  test 'should not create blank announcement' do
-    sign_in users(:one)
-    assert_no_changes('Announcement.count') do
-      post announcements_url, params: { announcement: { text: '' } }
-    end
-  end
-
-  test 'unauthenticated user should not add announcement' do
+  test 'unauthenticated user should not create announcement' do
     assert_no_difference('Announcement.count') do
       post announcements_url, params: { announcement: { text: 'My new announcement' } }
     end
     assert_redirected_to '/users/sign_in'
   end
 
-  test 'authenticated user should add announcement' do
+  test 'authenticated user should create announcement' do
     sign_in users(:one)
     assert_difference('Announcement.count', +1) do
       post announcements_url, params: { announcement: { text: 'My new announcement' } }
+    end
+  end
+
+  test 'authenticated user should not create blank announcement' do
+    sign_in users(:one)
+    assert_no_changes('Announcement.count') do
+      post announcements_url, params: { announcement: { text: '' } }
     end
   end
 
@@ -44,7 +43,7 @@ class AnnouncementsControllerTest < ActionDispatch::IntegrationTest
 
   test 'authenticated user should destroy announcement' do
     sign_in users(:one)
-    assert_difference('Announcement.count', +1) do
+    assert_difference('Announcement.count', -1) do
       delete announcement_url(@announcement)
     end
   end

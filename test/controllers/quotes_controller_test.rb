@@ -29,7 +29,7 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should fail to set score on created quote' do
-
+    assert false
   end
 
   test 'should show quote' do
@@ -77,8 +77,22 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     end
 
     get '/random'
-    assert_select "pre.quote_output", {:count=>0}
+    assert_select 'pre.quote_output', {:count=>0}
     assert_response :success    
+  end
+
+  test 'unauthenticated user should not update quote' do
+    assert_no_changes('Quote.find(@flagged_quote.id).flagged') do
+      get "/quotes/#{@flagged_quote.id}/unflag"
+    end
+    assert_redirected_to '/users/sign_in'
+  end
+  
+  test 'authenticated user should update quote' do
+    sign_in users(:one)
+    assert_changes('Quote.find(@flagged_quote.id).flagged') do
+      get "/quotes/#{@flagged_quote.id}/unflag"
+    end
   end
 
 end
