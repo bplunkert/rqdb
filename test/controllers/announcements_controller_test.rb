@@ -13,17 +13,57 @@ class AnnouncementsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'div.announcement', {:count=>2}
   end
 
-  test 'unauthenticated user should not add announcement' do
+
+  test 'should not create blank announcement' do
+    sign_in users(:one)
     assert_no_changes('Announcement.count') do
-      false
+      post announcements_url, params: { announcement: { text: '' } }
+    end
+  end
+
+  test 'unauthenticated user should not add announcement' do
+    assert_no_difference('Announcement.count') do
+      post announcements_url, params: { announcement: { text: 'My new announcement' } }
     end
     assert_redirected_to '/users/sign_in'
   end
 
   test 'authenticated user should add announcement' do
     sign_in users(:one)
-    assert_no_changes('Announcement.count') do
-      false
+    assert_difference('Announcement.count', +1) do
+      post announcements_url, params: { announcement: { text: 'My new announcement' } }
+    end
+  end
+
+  test 'unauthenticated user should not destroy announcement' do
+    assert_no_difference('Announcement.count') do
+      delete announcement_url(@announcement)
+    end
+    assert_redirected_to '/users/sign_in'
+  end
+
+  test 'authenticated user should destroy announcement' do
+    sign_in users(:one)
+    assert_difference('Announcement.count', +1) do
+      delete announcement_url(@announcement)
+    end
+  end
+
+  test 'unauthenticated user should not update announcement' do
+    assert_no_changes('@announcement.text') do
+      @modified_announcement = @announcement
+      @modified_announcement.text = 'Modified text'
+      put announcement_url, params: { announcement: @modified_announcement }
+    end
+    assert_redirected_to '/users/sign_in'
+  end
+
+  test 'authenticated user should update announcement' do
+    sign_in users(:one)    
+    assert_changes('@announcement.text') do
+      @modified_announcement = @announcement
+      @modified_announcement.text = 'Modified text'
+      put announcement_url, params: { announcement: @modified_announcement }
     end
   end
 end
