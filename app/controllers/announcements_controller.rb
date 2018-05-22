@@ -1,4 +1,5 @@
 class AnnouncementsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_announcement, only: [:show, :edit, :update, :destroy]
 
   # GET /announcements
@@ -7,16 +8,9 @@ class AnnouncementsController < ApplicationController
     @announcements = Announcement.order(created_at: :asc).page(params[:page])
   end
 
-  # GET /announcement/1
-  # GET /announcement/1.json
-  def show
-    @announcements = [Announcement.find(params[:id])]
-  end
-
   # POST /announcements
   # POST /announcements.json
   def create
-    authenticate_user!
     @announcement = Announcement.new(announcement_params)
     respond_to do |format|
       if @announcement.save
@@ -32,7 +26,6 @@ class AnnouncementsController < ApplicationController
   # PATCH/PUT /announcements/1
   # PATCH/PUT /announcements/1.json
   def update
-    authenticate_user!
     respond_to do |format|
       if @announcement.update(announcement_params)
         format.html { redirect_to announcements_url, notice: 'Announcement was successfully updated.' }
@@ -47,7 +40,6 @@ class AnnouncementsController < ApplicationController
   # DELETE /announcements/1
   # DELETE /announcements/1.json
   def destroy
-    authenticate_user!
     @announcement.destroy
     respond_to do |format|
       format.html { redirect_to announcements_url, notice: 'Announcement was successfully deleted.' }
