@@ -52,7 +52,7 @@ class AnnouncementsControllerTest < ActionDispatch::IntegrationTest
     assert_no_changes('@announcement.text') do
       @modified_announcement = @announcement
       @modified_announcement.text = 'Modified text'
-      put announcement_url, params: { announcement: @modified_announcement }
+      put announcement_url(@announcement), params: { announcement: @modified_announcement }
     end
     assert_redirected_to '/users/sign_in'
   end
@@ -62,7 +62,7 @@ class AnnouncementsControllerTest < ActionDispatch::IntegrationTest
     assert_changes('@announcement.text') do
       @modified_announcement = @announcement
       @modified_announcement.text = 'Modified text'
-      put announcement_url, params: { announcement: @modified_announcement }
+      put announcement_url(@announcement), params: { announcement: @modified_announcement }
     end
   end
 end
