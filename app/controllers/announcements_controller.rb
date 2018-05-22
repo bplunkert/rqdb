@@ -3,9 +3,14 @@ class AnnouncementsController < ApplicationController
   before_action :set_announcement, only: [:show, :update, :destroy]
 
   # GET /announcements
-  # GET /announcements
+  # GET /announcements.json
   def index
-    @announcements = Announcement.order(created_at: :asc).page(params[:page])
+    @announcements = Announcement.order(created_at: :desc).page(params[:page])
+  end
+
+  # GET /announcements/new
+  def new
+  	@announcement = Announcement.new
   end
 
   # POST /announcements
