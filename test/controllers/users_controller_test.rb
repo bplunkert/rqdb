@@ -21,14 +21,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test "unauthenticated user should not create user" do
+  test 'unauthenticated user should not create user' do
     assert_no_difference('User.count') do
       post users_url, params: { user: { email: 'another@email', password: 'password' } }
     end
     assert_redirected_to '/users/sign_in'
   end
 
-  test "authenticated user should create user" do
+  test 'authenticated user should create user' do
     sign_in users(:one)
     assert_difference('User.count', +1) do
       post users_url, params: { user: { email: 'another@email', password: 'password' } }
@@ -37,14 +37,14 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
 
-  test "unauthenticated user should not destroy user" do
+  test 'unauthenticated user should not destroy user' do
     assert_no_difference('User.count') do
       post users_url, params: { user: { email: 'another@email', password: 'password' } }
     end
     assert_redirected_to '/users/sign_in'
   end
 
-  test "authenticated user should not destroy self" do
+  test 'authenticated user should not destroy self' do
     sign_in users(:one)
     sign_in users(:one)
     assert_no_difference('User.count') do
@@ -54,7 +54,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   end
 
-  test "authenticated user should destroy other user" do
+  test 'authenticated user should destroy other user' do
     sign_in users(:one)
     assert_difference('User.count', -1) do
       delete "/admin/users/#{@other_user.id}"

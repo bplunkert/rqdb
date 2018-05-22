@@ -5,8 +5,8 @@ class AnnouncementsTest < ApplicationSystemTestCase
     @announcement = announcements(:one)
   end
 
-  test 'visiting the index' do
-    visit '/'
-    assert_select "pre", {:class => "announcement", :count=>1}
+  test "visiting the index" do
+    visit quotes_url
+    assert_selector "table", class: "announcements"
   end
 end

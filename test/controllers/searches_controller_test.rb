@@ -5,21 +5,21 @@ class SearchesControllerTest < ActionDispatch::IntegrationTest
     @search = searches(:one)
   end
 
-  test "search should return matching quotes" do
+  test 'search should return matching quotes' do
     post '/search', params: { pattern: 'MyString1' }
     assert_response :success
-    assert_select "pre", {:class => "quote_output", :count=>1}
+    assert_select 'pre.quote_output', {:count=>1}
   end
 
-  test "search should not return nonmatching quotes" do
+  test 'search should not return nonmatching quotes' do
     post '/search', params: { pattern: 'BogusStringWithNoMatchingQuotes' }
     assert_response :success
-    assert_select "pre", {:class => "quote_output", :count=>0}
+    assert_select 'pre.quote_output', {:count=>0}
   end
 
-  test "empty search pattern should not return quotes" do
+  test 'empty search pattern should not return quotes' do
     post '/search', params: { pattern: '' }
     assert_response :success
-    assert_select "pre", {:class => "quote_output", :count=>0}
+    assert_select 'pre.quote_output', {:count=>0}
   end
 end

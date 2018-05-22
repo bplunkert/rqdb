@@ -1,20 +1,19 @@
-<table>
- <tr>
-  <td valign="top" width="50%"> Lorem ipsum dolor sit amet, sit eu eligendi scriptorem liberavisse, no pro civibus consetetur appellantur, feugiat bonorum vis at. Ea prima habemus senserit nec, feugiat torquatos contentiones ea has. Meis commodo ullamcorper no eam, sit eu modo menandri laboramus, eum id tation discere dolores. Elit inermis ocurreret at per.<br /><br />
+<div class="row">
+  <div class="col-sm-6">
+   Lorem ipsum dolor sit amet, sit eu eligendi scriptorem liberavisse, no pro civibus consetetur appellantur, feugiat bonorum vis at. Ea prima habemus senserit nec, feugiat torquatos contentiones ea has. Meis commodo ullamcorper no eam, sit eu modo menandri laboramus, eum id tation discere dolores. Elit inermis ocurreret at per.<br /><br />
 
-In detraxit percipitur qui. Nam ferri inermis id, movet pertinax adipiscing nam in. Idque facilisi efficiantur pro id. Lorem nonumes ad pri, suas noster pertinax at quo, duo facilisis neglegentur ad.<br /><br />
+  In detraxit percipitur qui. Nam ferri inermis id, movet pertinax adipiscing nam in. Idque facilisi efficiantur pro id. Lorem nonumes ad pri, suas noster pertinax at quo, duo facilisis neglegentur ad.<br /><br />
 
-No per simul munere putent, cu principes conceptam qui. Cum purto tempor aeterno ne, legere theophrastus in eum. Choro cetero legimus no ius. Exerci vivendo liberavisse ei usu, quo at legendos argumentum. Eos an aliquid perpetua, ex eum dolores oporteat suavitate. Cum ei affert adipisci.<br/><br />
+  No per simul munere putent, cu principes conceptam qui. Cum purto tempor aeterno ne, legere theophrastus in eum. Choro cetero legimus no ius. Exerci vivendo liberavisse ei usu, quo at legendos argumentum. Eos an aliquid perpetua, ex eum dolores oporteat suavitate. Cum ei affert adipisci.<br/><br />
 
-Graeci commodo praesent vix ad, esse reprimique cu vim, commune accusata tractatos his ei. Et aperiam accumsan vel, ei cum ferri constituam definitiones. Duo cu putent veritus referrentur. Mei in wisi utinam insolens, in mea stet illum pertinax.<br /><br />
+  Graeci commodo praesent vix ad, esse reprimique cu vim, commune accusata tractatos his ei. Et aperiam accumsan vel, ei cum ferri constituam definitiones. Duo cu putent veritus referrentur. Mei in wisi utinam insolens, in mea stet illum pertinax.<br /><br />
 
-Vel dicta vidisse percipitur ex, qui purto possim no, quo id partiendo periculis reprehendunt. Iisque verterem consulatu cu sit, accusata petentium ea nam. Aeterno complectitur qui cu, in est interesset necessitatibus. Mei te zril urbanitas pertinacia. Mel ea reformidans ullamcorper, atqui putant aperiam vix in, an pri clita omnes fabellas. At putent sapientem mel.</td>
-  <td valign="top", width="50%">
-   <table>
+  Vel dicta vidisse percipitur ex, qui purto possim no, quo id partiendo periculis reprehendunt. Iisque verterem consulatu cu sit, accusata petentium ea nam. Aeterno complectitur qui cu, in est interesset necessitatibus. Mei te zril urbanitas pertinacia. Mel ea reformidans ullamcorper, atqui putant aperiam vix in, an pri clita omnes fabellas. At putent sapientem mel.
+  </div>
+  <div class="announcements col-sm-6">
     <%= paginate(@announcements) %>
     <% @announcements.each do |announcement| -%>
-    <%= render 'announcements/show', :announcement => announcement %>
+      <%= render 'announcements/show', :announcement => announcement %>
     <% end %>
-   </table>
-  </tr>
-</table>
+  </div>
+</div>

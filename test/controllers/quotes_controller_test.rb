@@ -19,8 +19,17 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create quote' do
     assert_difference('Quote.count') do
-      post quotes_url, params: { quote: { score: @quote.score, text: @quote.text } }
+      post quotes_url, params: { quote: { text: @quote.text } }
     end
+  end
+
+  test 'should fail to create approved quote' do
+    post quotes_url, params: { quote: { text: 'this quote is not approved', approved: true  } }
+    assert_equal false, Quote.where(text: 'this quote is not approved').first.approved
+  end
+
+  test 'should fail to set score on created quote' do
+
   end
 
   test 'should show quote' do
@@ -68,7 +77,7 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     end
 
     get '/random'
-    assert_select "pre", {:class => "quote_output", :count=>0}
+    assert_select "pre.quote_output", {:count=>0}
     assert_response :success    
   end
 
