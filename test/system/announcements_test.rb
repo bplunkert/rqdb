@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class AnnouncementsTest < ApplicationSystemTestCase
   setup do
-    @quote = quotes(:one)
+    @announcement = announcements(:one)
   end
 
   test 'visiting the index' do
