@@ -1,6 +1,6 @@
 class AnnouncementsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :set_announcement, only: [:show, :edit, :update, :destroy]
+  before_action :set_announcement, only: [:show, :update, :destroy]
 
   # GET /announcements
   # GET /announcements
@@ -17,7 +17,7 @@ class AnnouncementsController < ApplicationController
         format.html { redirect_to announcements_url, notice: 'Announcement was successfully created.' }
         format.json { render :show, status: :created, location: announcements_url }
       else
-        format.html { render :new }
+        format.html { redirect_to announcements_url }
         format.json { render json: @announcement.errors, status: :unprocessable_entity }
       end
     end
