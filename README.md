@@ -10,6 +10,7 @@ Install [RVM](https://rvm.io) and Ruby 2.5.1:
 
 Install bundled ruby gems:
 * ```bundle install```
+* Note: if bundle install fails due to postgres errors, you can safely skip this for development and testing by running: ```bundle install --without production```
 
 Installation:
 * ```bundle exec rake db:migrate```

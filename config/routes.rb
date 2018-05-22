@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get 'top',          to: 'quotes#top'
   get 'bottom',       to: 'quotes#bottom'
 
+  resources :announcements
+
   resources :quotes do
     member do
       get :downvote
