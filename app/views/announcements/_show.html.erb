@@ -1,6 +1,8 @@
- <tr>
-  <td>
-   <pre><b><%= announcement.created_at.strftime("%Y.%m.%d %H:%M:%S %Z") %></b>
-   <%= announcement.text %></pre>
-  </td>
- </tr>
+<tr>
+	<td>
+		<strong><%= announcement.created_at.strftime("%Y.%m.%d %H:%M:%S %Z") %></strong>
+		<pre class="announcement">
+			<%= announcement.text %>
+		</pre>
+	</td>
+</tr>
