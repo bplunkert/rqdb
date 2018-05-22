@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :users
   end
 
-  root to: 'quotes#index'
+  root to: 'announcements#index'
 
   get 'admin',        to: 'admin#index'
   get 'browse',       to: 'quotes#index'
