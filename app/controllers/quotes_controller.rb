@@ -125,6 +125,12 @@ class QuotesController < ApplicationController
     @quotes = Quote.where(approved: true).order(score: :desc).page(params[:page])
   end
 
+  # GET /bottom
+  # GET /bottom.json
+  def bottom
+    @quotes = Quote.where(approved: true).order(score: :asc).page(params[:page])
+  end
+
   # GET /random
   # GET /random.json
   def random

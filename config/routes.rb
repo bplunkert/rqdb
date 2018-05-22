@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   post '/search',     to: 'search#index'  
   get 'submitted',    to: 'admin#submitted'
   get 'top',          to: 'quotes#top'
+  get 'bottom',       to: 'quotes#bottom'
 
   resources :quotes do
     member do
