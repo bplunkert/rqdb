@@ -18,7 +18,7 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should create quote' do
-    assert_difference('Quote.count') do
+    assert_difference('Quote.count', +1) do
       post quotes_url, params: { quote: { score: @quote.score, text: @quote.text } }
     end
   end
@@ -27,6 +27,20 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     get quote_url(@quote)
     assert_response :success
   end
+
+  test 'should upvote quote' do
+    assert_difference('Quote.find(@quote.id).score', +1) do
+      get "/quotes/#{@quote.id}/upvote"
+    end
+    assert_redirected_to quote_url(@quote)
+  end
+
+  test 'should downvote quote' do
+    assert_difference('Quote.find(@quote.id).score', -1) do
+      get "/quotes/#{@quote.id}/downvote"
+    end
+    assert_redirected_to quote_url(@quote)
+  end  
 
   test 'authenticated user should destroy quote' do
     sign_in users(:one)
