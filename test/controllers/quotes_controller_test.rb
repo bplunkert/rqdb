@@ -39,7 +39,7 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should show random quotes' do
-    get '/bottom'
+    get '/random'
     assert_response :success
   end
 
