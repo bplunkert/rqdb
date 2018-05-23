@@ -13,7 +13,7 @@ User.create!([
   {email: 'admin@admin.admin', password: 'password'}
 ])
 
-Quote.create(approved:true, score:10, text:
+Quote.create(approved:true, text:
 '<Cthon98> hey, if you type in your pw, it will show as stars
 <Cthon98> ********* see!
 <AzureDiamond> hunter2
@@ -34,11 +34,11 @@ Quote.create(approved:true, score:10, text:
 
 Quote.create(approved: false, text: '<erno> hm. I\'ve lost a machine.. literally _lost_. it responds to ping, it works completely, I just can\'t figure out where in my apartment it is.')
 
-Quote.create(approved: true, flagged: true, score: 1, text: '<jeebus> the "bishop" came to our church today
+Quote.create(approved: true, flagged: true, text: '<jeebus> the "bishop" came to our church today
 <jeebus> he was a fucken impostor
 <jeebus> never once moved diagonally')
 
-Quote.create(approved: true, score: 1, text: '< nutbar> [root@linux!/usr/src/bind] grep "{" named.conf.newer | wc -l
+Quote.create(approved: true, text: '< nutbar> [root@linux!/usr/src/bind] grep "{" named.conf.newer | wc -l
 < nutbar>   19314
 < nutbar> [root@linux!/usr/src/bind] grep "}" named.conf.newer | wc -l
 < nutbar>   19313
@@ -47,31 +47,31 @@ Quote.create(approved: true, score: 1, text: '< nutbar> [root@linux!/usr/src/bin
 * nutbar fumes
 < nutbar> one fucking missing }')
 
-Quote.create(approved: true, score: 1, text: '<GaRlic> how you like my new name?
+Quote.create(approved: true, text: '<GaRlic> how you like my new name?
 <drunkers> it stinks')
-Quote.create(approved: true, score: 1, text: '<danie2> do you have a gf?
+Quote.create(approved: true, text: '<danie2> do you have a gf?
 <ieatrocks> hahahahahah
 <ieatrocks> wow, thanks for even asking.')
-Quote.create(approved: true, score: 1, text: '<VolteFace`> don\'t you hate it when you shit on the floor, and you can hear it fall but you have no idea where it actually landed, and spend like 5 minutes looking for it
+Quote.create(approved: true, text: '<VolteFace`> don\'t you hate it when you shit on the floor, and you can hear it fall but you have no idea where it actually landed, and spend like 5 minutes looking for it
 <peng> ...
 <peng> what?
 <VolteFace`> oh shit
 <VolteFace`> don\'t you hate it when you DROP shit')
-Quote.create(approved: true, score: 1, text: '<fppe> The worst thing about a prostate exam is when he finds out you\'re not a real doctor.')
-Quote.create(approved: true, score: 1, text: '<ednos> technically, I\'m not pedantic')
-Quote.create(approved: true, score: 1, text: '<tttb> Why did the programmer quit his job?
+Quote.create(approved: true, text: '<fppe> The worst thing about a prostate exam is when he finds out you\'re not a real doctor.')
+Quote.create(approved: true, text: '<ednos> technically, I\'m not pedantic')
+Quote.create(approved: true, text: '<tttb> Why did the programmer quit his job?
 <tttb> because he didn\'t get arrays')
-Quote.create(approved: true, score: 1, text: '<@apexthief> Okay we have taco tuesday I need other food day of the week ideas
+Quote.create(approved: true, text: '<@apexthief> Okay we have taco tuesday I need other food day of the week ideas
 <@AltRhombu> taco wednesday
 <@AltRhombu> taco thursday')
-Quote.create(approved: true, score: 1, text: '<Papa_Wa> Anyone else struggling to login?
+Quote.create(approved: true, text: '<Papa_Wa> Anyone else struggling to login?
 <Udungoof> i\'m struggling most of the time
 <Udungoof> not necessarily with loginservers though
 <Udongoof> life mostly')
-Quote.create(approved: true, score: 1, text: '')
-Quote.create(approved: true, score: 1, text: '')
-Quote.create(approved: true, score: 1, text: '')
-Quote.create(approved: true, score: 1, text: '')
-Quote.create(approved: true, score: 1, text: '')
-Quote.create(approved: true, score: 1, text: '')
-Quote.create(approved: true, score: 1, text: '')
+Quote.create(approved: true, text: '')
+Quote.create(approved: true, text: '')
+Quote.create(approved: true, text: '')
+Quote.create(approved: true, text: '')
+Quote.create(approved: true, text: '')
+Quote.create(approved: true, text: '')
+Quote.create(approved: true, text: '')

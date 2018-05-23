@@ -1,3 +1,3 @@
 class Vote < ApplicationRecord
-  belongs_to :quote_id
+  belongs_to :quote
 end

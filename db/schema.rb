@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_23_022941) do
+ActiveRecord::Schema.define(version: 2018_05_23_030416) do
 
   create_table "announcements", force: :cascade do |t|
     t.string "text", null: false
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2018_05_23_022941) do
 
   create_table "quotes", force: :cascade do |t|
     t.string "text", null: false
-    t.integer "score", default: 0, null: false
     t.boolean "approved", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -51,12 +50,12 @@ ActiveRecord::Schema.define(version: 2018_05_23_022941) do
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer "quote_id_id"
-    t.string "ipaddress"
-    t.integer "value"
+    t.integer "quote_id"
+    t.string "ipaddress", null: false
+    t.integer "value", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["quote_id_id"], name: "index_votes_on_quote_id_id"
+    t.index ["quote_id"], name: "index_votes_on_quote_id"
   end
 
 end

@@ -1,6 +1,6 @@
 class QuotesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :new, :create, :search, :downvote, :upvote, :flag, :latest, :random, :random1, :bottom, :top ]
-  before_action :set_quote, only: [:show, :update, :destroy]
+  before_action :set_quote, only: [:show, :update, :destroy, :upvote, :downvote]
 
   # GET /quotes
   # GET /quotes.json
@@ -27,10 +27,15 @@ class QuotesController < ApplicationController
 
   # GET /quotes/1/downvote
   def downvote
-    @quote = Quote.find(params[:id])
-    @quote.update(score: @quote.score - 1)
+    votes = Vote.where(quote: @quote, ipaddress: request.remote_ip)
+    if votes.count > 0
+      vote = votes.first
+      vote.update(value: -1)
+    else
+      vote = Vote.new(quote: @quote, ipaddress: request.remote_ip, value: -1)
+    end
     respond_to do |format|
-      if @quote.save
+      if vote.save
         format.html { redirect_to @quote, notice: 'Quote was successfully downvoted.' }
         format.json { render :show, status: :ok, location: @quote }
       else
@@ -41,12 +46,16 @@ class QuotesController < ApplicationController
   end
 
   # GET /quotes/1/upvote
-  # POST /quotes/1/upvote
   def upvote
-    @quote = Quote.find(params[:id])
-    @quote.update(score: @quote.score + 1)
+    votes = Vote.where(quote: @quote, ipaddress: request.remote_ip)
+    if votes.count > 0
+      vote = votes.first
+      vote.update(value: +1)
+    else
+      vote = Vote.new(quote: @quote, ipaddress: request.remote_ip, value: +1)
+    end
     respond_to do |format|
-      if @quote.save
+      if vote.save
         format.html { redirect_to @quote, notice: 'Quote was successfully upvoted.' }
         format.json { render :show, status: :ok, location: @quote }
       else
@@ -55,6 +64,7 @@ class QuotesController < ApplicationController
       end
     end
   end
+
 
   # GET /quotes/1/approve
   # POST /quotes/1/approve
