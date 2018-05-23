@@ -28,6 +28,21 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should show top quotes' do
+    get '/top'
+    assert_response :success
+  end
+
+  test 'should show bottom quotes' do
+    get '/bottom'
+    assert_response :success
+  end
+
+  test 'should show random quotes' do
+    get '/bottom'
+    assert_response :success
+  end
+
   test 'should upvote quote' do
     assert_difference('@quote.score', +1) do
       get "/quotes/#{@quote.id}/upvote"
