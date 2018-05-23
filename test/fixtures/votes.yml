@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  quote: 1
+  id: 1
+  quote_id: 1
   ipaddress: MyString
   value: 1
 
 two:
-  quote: 2
+  id: 2
+  quote_id: 1
   ipaddress: MyString2
-  value: -1
+  value: 4

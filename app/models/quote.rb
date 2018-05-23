@@ -3,5 +3,7 @@ class Quote < ApplicationRecord
 
   def score
     votes = Vote.where(quote: self)
+    tally = votes.sum(:value)
+    tally
   end
 end
