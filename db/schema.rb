@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_22_142058) do
+ActiveRecord::Schema.define(version: 2018_05_23_022941) do
 
   create_table "announcements", force: :cascade do |t|
     t.string "text", null: false
@@ -48,6 +48,15 @@ ActiveRecord::Schema.define(version: 2018_05_22_142058) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "quote_id_id"
+    t.string "ipaddress"
+    t.integer "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quote_id_id"], name: "index_votes_on_quote_id_id"
   end
 
 end

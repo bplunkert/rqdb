@@ -26,7 +26,6 @@ class QuotesController < ApplicationController
   end
 
   # GET /quotes/1/downvote
-  # POST /quotes/1/downvote
   def downvote
     @quote = Quote.find(params[:id])
     @quote.update(score: @quote.score - 1)
