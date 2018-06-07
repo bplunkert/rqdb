@@ -1,6 +1,6 @@
 class QuotesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :new, :create, :search, :downvote, :upvote, :flag, :latest, :random, :random1, :bottom, :top ]
-  before_action :set_quote, only: [:show, :update, :destroy, :upvote, :downvote]
+  before_action :set_quote, only: [:show, :update, :destroy, :approve, :flag, :unflag, :upvote, :downvote]
 
   # GET /quotes
   # GET /quotes.json
@@ -71,7 +71,6 @@ class QuotesController < ApplicationController
   # GET /quotes/1/approve
   # POST /quotes/1/approve
   def approve
-    @quote = Quote.find(params[:id])
     @quote.update(approved: true)
     respond_to do |format|
       if @quote.save
@@ -88,7 +87,6 @@ class QuotesController < ApplicationController
   # GET /quotes/1/flag
   # POST /quotes/1/flag
   def flag
-    @quote = Quote.find(params[:id])
     @quote.update(flagged: true)
     respond_to do |format|
       if @quote.save
@@ -103,7 +101,6 @@ class QuotesController < ApplicationController
 
   # GET /quotes/1/unflag
   def unflag
-    @quote = Quote.find(params[:id])
     @quote.update(flagged: false)
     respond_to do |format|
       if @quote.save
