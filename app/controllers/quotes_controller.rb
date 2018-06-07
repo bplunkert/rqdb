@@ -34,8 +34,9 @@ class QuotesController < ApplicationController
     else
       vote = Vote.new(quote: @quote, ipaddress: request.remote_ip, value: -1)
     end
+    @quote.update(score: @quote.score - 1)
     respond_to do |format|
-      if vote.save
+      if vote.save and @quote.save
         format.html { redirect_to @quote, notice: 'Quote was successfully downvoted.' }
         format.json { render :show, status: :ok, location: @quote }
       else
@@ -54,8 +55,9 @@ class QuotesController < ApplicationController
     else
       vote = Vote.new(quote: @quote, ipaddress: request.remote_ip, value: +1)
     end
+    @quote.update(score: @quote.score + 1)
     respond_to do |format|
-      if vote.save
+      if vote.save and @quote.save
         format.html { redirect_to @quote, notice: 'Quote was successfully upvoted.' }
         format.json { render :show, status: :ok, location: @quote }
       else
