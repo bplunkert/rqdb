@@ -27,14 +27,14 @@ class QuotesController < ApplicationController
 
   # GET /quotes/1/downvote
   def downvote
-    votes = Vote.where(quote: @quote, ipaddress: request.remote_ip)
-    if votes.count > 0
-      vote = votes.first
+    previous_votes = Vote.where(quote: @quote, ipaddress: request.remote_ip)
+    if previous_votes.count > 0
+      vote = previous_votes.first
       vote.update(value: -1)
     else
       vote = Vote.new(quote: @quote, ipaddress: request.remote_ip, value: -1)
     end
-    @quote.update(score: @quote.score - 1)
+    @quote.update(score: Vote.where(quote: @quote).sum(:value))
     respond_to do |format|
       if vote.save and @quote.save
         format.html { redirect_to @quote, notice: 'Quote was successfully downvoted.' }
@@ -48,14 +48,14 @@ class QuotesController < ApplicationController
 
   # GET /quotes/1/upvote
   def upvote
-    votes = Vote.where(quote: @quote, ipaddress: request.remote_ip)
-    if votes.count > 0
-      vote = votes.first
+    previous_votes = Vote.where(quote: @quote, ipaddress: request.remote_ip)
+    if previous_votes.count > 0
+      vote = previous_votes.first
       vote.update(value: +1)
     else
       vote = Vote.new(quote: @quote, ipaddress: request.remote_ip, value: +1)
     end
-    @quote.update(score: @quote.score + 1)
+    @quote.update(score: Vote.where(quote: @quote).sum(:value))
     respond_to do |format|
       if vote.save and @quote.save
         format.html { redirect_to @quote, notice: 'Quote was successfully upvoted.' }
