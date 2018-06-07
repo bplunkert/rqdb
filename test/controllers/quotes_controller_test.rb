@@ -44,11 +44,11 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should upvote quote' do
-    assert_difference('@quote.score', +1) do
+    assert_difference('Quote.find(@quote.id).score', +1) do
       get "/quotes/#{@quote.id}/upvote"
     end
     assert_redirected_to quote_url(@quote)
-  end
+  end 
 
   test 'should downvote quote' do
     assert_difference('Quote.find(@quote.id).score', -1) do
