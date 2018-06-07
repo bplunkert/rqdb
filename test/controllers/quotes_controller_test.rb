@@ -43,19 +43,21 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should upvote quote' do
+  test 'should upvote quote only once' do
     assert_difference('Quote.find(@quote.id).score', +1) do
-      get "/quotes/#{@quote.id}/upvote"
+      3.times { get "/quotes/#{@quote.id}/upvote" }
     end
     assert_redirected_to quote_url(@quote)
-  end 
+  end
 
-  test 'should downvote quote' do
+  test 'should downvote quote only once' do
     assert_difference('Quote.find(@quote.id).score', -1) do
-      get "/quotes/#{@quote.id}/downvote"
+      3.times do |i|
+        get "/quotes/#{@quote.id}/upvote"        
+      end
     end
     assert_redirected_to quote_url(@quote)
-  end  
+  end
 
   test 'authenticated user should destroy quote' do
     sign_in users(:one)
