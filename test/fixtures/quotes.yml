@@ -3,8 +3,10 @@
 one:
   id: 1
   text: MyString1
+  score: 5
 
 two:
   id: 2
   text: MyString2
   flagged: true
+  score: 0
