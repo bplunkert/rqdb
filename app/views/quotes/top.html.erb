@@ -1,0 +1,4 @@
+<%= paginate(@quotes) %>
+<% @quotes.each do |quote| -%>
+<%= render 'quotes/show', :quote => quote %>
+<% end -%>

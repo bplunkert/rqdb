@@ -1,0 +1,22 @@
+<div class="col-md-1"></div>
+<div class="col-md-10" id="navbar">
+	<nav class="navbar navbar-expand-md navbar-right" role="navigation">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<%= link_to 'Post Announcement', '/announcements/new', class: 'nav-link' %>
+			</li>
+			<li class="nav-item">
+				<%= link_to 'Flagged Quotes', '/flagged', class: 'nav-link' %>
+			</li>
+			<li class="nav-item">
+				<%= link_to 'Submitted Quotes', '/submitted', class: 'nav-link' %>
+			</li>
+			<li class="nav-item">
+				<%= link_to 'Users', '/admin/users', class: 'nav-link' %>
+			</li>
+			<li class="nav-item">
+				<%= link_to 'Logout', destroy_user_session_path, :method => :delete, class: 'nav-link' %>
+			</li>
+	</nav>
+</div>
+<div class="col-md-1"></div>

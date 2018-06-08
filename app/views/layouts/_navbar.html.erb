@@ -1,0 +1,38 @@
+<div class="col-md-1"></div>			
+<div class="col-md-10" id="navbar">
+	<nav class="navbar navbar-expand-md navbar-right" role="navigation">
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<%= link_to "Home", "/" , class: 'nav-link' %> <!--<span class="sr-only">(current)</span>-->
+			</li>
+			<li class="nav-item">
+				<%= link_to "Latest", "/latest", class: 'nav-link' %>
+			</li>
+			<li class="nav-item">
+				<%= link_to "Browse", "/browse", class: 'nav-link' %>
+			</li>
+			<li class="nav-item">
+				<div class="nav-link">
+					<%= link_to "Random", "/random" %> <%= link_to ">0", "/random1" %>
+				</div>
+			</li>
+			<li class="nav-item">
+				<%= link_to "Top", "/top", class: 'nav-link' %>
+			</li>
+			<li>
+				<%= link_to "Bottom", "/bottom", class: 'nav-link' %>
+			</li>
+			<li class="nav-item">
+				<strong><%= link_to "Add Quote", "/quotes/new", class: 'nav-link' %></strong>
+			</li>
+			<li class="nav-item">
+				<%= link_to "Search", "/search", class: 'nav-link' %>
+			</li>
+			<li class="nav-item">
+			  <div class="form-inline">
+					#<%= form_tag("/search", method: "get") do %><%= text_field_tag(:quote_id, nil, size: 1, class: "form-control form-control-sm input-sm") %><% end %>
+				</div>
+			</li>
+	</nav>
+</div>
+<div class="col-md-1"></div>

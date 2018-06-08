@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>RQDB</title>
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
+
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	</head>
+
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div class="col-md-10" id="title">
+					RQDB <%= link_to 'Admin', '/users/sign_in', class: 'adminlink' %>
+				</div>
+				<div class="col-md-1"></div>			
+			</div>
+			<div class="row">
+				<%= render 'layouts/navbar' %>
+			</div>
+			<% if user_signed_in? -%>
+				<div class="row">
+					<%= render 'admin/navbar' %>
+				</div>
+			<% end -%>
+			<div class="row">
+				<div class="col-md-1"></div>			
+				<div class="col-md-10 quotes">
+							<% if notice %><p class="notice"><%= notice %></p><% end %>
+							<% if alert %><p class="alert"><%= alert %></p><% end %>
+					<%= yield %>
+				</div>
+				<div class="col-md-1"></div>			
+			</div>
+			<div class="row">
+				<%= render 'layouts/navbar' %>
+			</div>
+			<div class="row">
+				<div class="col-md-1"></div>						
+				<div class="col-md-10" id="versionbar">
+					RQDB Version: <%= Rails.configuration.version %>
+				</div>
+				<div class="col-md-1"></div>
+			</div>
+	</body>
+</html>

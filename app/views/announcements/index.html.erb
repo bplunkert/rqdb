@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-sm-6">
+    <p>Welcome to Rash Quote Database!</p>
+  </div>
+  <div class="announcements col-sm-6">
+    <%= paginate(@announcements) %>
+    <% @announcements.each do |announcement| -%>
+      <div class="announcement row">
+        <%= render 'announcements/show', :announcement => announcement %>
+      </div>
+    <% end %>
+  </div>
+</div>

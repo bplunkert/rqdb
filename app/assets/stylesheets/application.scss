@@ -1,0 +1,84 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+
+body {
+	font-size: 10pt;
+	font-family: Veranda, sans-serif;
+	color: #000000;
+	align: center;
+}
+
+a, a#admin_link, a:link, a:visited{
+	color: #336699;
+}
+a#admin_link:hover, a:hover, a:visited:hover{
+	color: #c08000;
+}
+
+#title, #versionbar {
+    color: #FFFFFF;
+    background-color: #336699;
+}
+
+#versionbar {
+	text-align: right;
+}
+
+pre.quote_output{
+	font-family: "Courier New", Courier, monospace;
+	padding-bottom: 13pt;
+}
+
+.navbar, #navbar {
+	background-color: #f0f0f0;
+	text-align: right;
+	font-size: 10pt;
+	font-family: Veranda, sans-serif;
+	color: #000000;
+	float: right;
+	padding-bottom: 1px;	
+	padding-top: 2px;
+	max-height: 30pt;
+}
+
+.quotes {
+	text-align: left;
+}
+
+.pagination > li > a:active,
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:active,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+    z-index: 3;
+    color: #23527c;
+    background-color: #336699;
+    border-color: #ddd;
+}
+
+#title {
+	color: #fff;
+	font-size: 15pt;
+	font-style: italic;	
+}
+
+.adminlink {
+	color: #f0f0f0;
+	font-size: 10pt;
+}
+
