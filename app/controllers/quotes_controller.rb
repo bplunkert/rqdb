@@ -31,10 +31,11 @@ class QuotesController < ApplicationController
     if previous_votes.count > 0
       vote = previous_votes.first
       vote.update(value: -1)
+      @quote.update(score: Vote.where(quote: @quote).sum(:value))
     else
       vote = Vote.new(quote: @quote, ipaddress: request.remote_ip, value: -1)
+      @quote.update(score: -1)
     end
-    @quote.update(score: Vote.where(quote: @quote).sum(:value))
     respond_to do |format|
       if vote.save and @quote.save
         format.html { redirect_to @quote, notice: 'Quote was successfully downvoted.' }
@@ -52,10 +53,11 @@ class QuotesController < ApplicationController
     if previous_votes.count > 0
       vote = previous_votes.first
       vote.update(value: +1)
+      @quote.update(score: Vote.where(quote: @quote).sum(:value))
     else
       vote = Vote.new(quote: @quote, ipaddress: request.remote_ip, value: +1)
+      @quote.update(score: +1)
     end
-    @quote.update(score: Vote.where(quote: @quote).sum(:value))
     respond_to do |format|
       if vote.save and @quote.save
         format.html { redirect_to @quote, notice: 'Quote was successfully upvoted.' }
