@@ -7,8 +7,13 @@ Rash/Rails Quote Database is a simple web application for publishing, sharing, a
 
 Depedendencies:
 Install [RVM](https://rvm.io) and Ruby 2.5.1:
+<<<<<<< HEAD
 * ```curl -sSL https://rvm.io/mpapis.asc | gpg --import -```
 * ```curl -sSL https://get.rvm.io | bash -s stable --ruby=2.5.1```
+=======
+* ```curl -sSL https://rvm.io/mpapis.asc | gpg --import -```
+* ```curl -sSL https://get.rvm.io | bash -s stable --ruby=2.5.1```
+>>>>>>> development
 
 Install bundled ruby gems:
 * ```bundle install```
