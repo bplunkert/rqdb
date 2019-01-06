@@ -11,6 +11,8 @@ class AnnouncementsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select 'div.announcements', {:count=>1}
     assert_select 'div.announcement', {:count=>2}
+    assert_match /My first announcement/, response.parsed_body, 'Failed to find first announcement'
+    assert_match /My other announcement/, response.parsed_body, 'Failed to find other announcement'
   end
 
   test 'unauthenticated user should not create announcement' do

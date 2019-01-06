@@ -3,11 +3,12 @@
 one:
   id: 1
   quote_id: 1
-  ipaddress: MyString
+  ipaddress: 127.0.0.2
   value: 1
 
 two:
   id: 2
   quote_id: 1
-  ipaddress: MyString2
+  ipaddress: 127.0.0.3
   value: 4
+
