@@ -2,8 +2,8 @@
 
 one:
   id: 1
-  text: MyString
+  text: My first announcement
 
 two:
   id: 2
-  text: MyString
+  text: My other announcement

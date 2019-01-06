@@ -30,7 +30,7 @@
 			</li>
 			<li class="nav-item">
 			  <div class="form-inline">
-					#<%= form_tag("/search", method: "get") do %><%= text_field_tag(:quote_id, nil, size: 1, class: "form-control form-control-sm input-sm") %><% end %>
+					#<%= form_tag("/search", method: "post") do %><%= text_field_tag(:quote_id, nil, size: 1, class: "form-control form-control-sm input-sm") %><% end %>
 				</div>
 			</li>
 	</nav>
