@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /quotes/*/downvote
+Disallow: /quotes/*/flag
+Disallow: /quotes/*/upvote
