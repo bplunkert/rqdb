@@ -29,9 +29,13 @@ a#admin_link:hover, a:hover, a:visited:hover{
 	color: #c08000;
 }
 
-#title, #versionbar {
+#title, #versionbar, #tickerbar {
     color: #FFFFFF;
     background-color: #336699;
+}
+
+#tickerbar {
+	text-align: left;
 }
 
 #versionbar {
