@@ -37,6 +37,8 @@ class AnnouncementsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'unauthenticated user should not destroy announcement' do
+    get '/'
+    assert_no_match /Delete/, response.parsed_body, 'Authenticated user is not seeing link to delete announcement'
     assert_no_difference('Announcement.count') do
       delete announcement_url(@announcement)
     end
@@ -45,6 +47,8 @@ class AnnouncementsControllerTest < ActionDispatch::IntegrationTest
 
   test 'authenticated user should destroy announcement' do
     sign_in users(:one)
+    get '/'
+    assert_match /Delete/, response.parsed_body, 'Authenticated user is not seeing link to delete announcement'
     assert_difference('Announcement.count', -1) do
       delete announcement_url(@announcement)
     end

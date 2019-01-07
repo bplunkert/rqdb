@@ -181,7 +181,10 @@ class QuotesController < ApplicationController
   # POST /quotes
   # POST /quotes.json
   def create
-    @quote = Quote.new(quote_params)
+    all_params = quote_params
+    all_params['submitterip'] = request.ip
+
+    @quote = Quote.new(all_params)
 
     respond_to do |format|
       if @quote.score != 0 or @quote.approved

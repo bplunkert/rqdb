@@ -64,6 +64,11 @@ group :test do
   gem 'chromedriver-helper'
 end
 
+group :legacy_migration, optional: true do
+  gem 'mysql2'
+  gem 'OptionParser'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
