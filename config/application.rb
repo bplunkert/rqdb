@@ -16,6 +16,6 @@ module RashOnRails
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    config.version = "0.2.0"
+    config.version = "0.3.0"
   end
 end
