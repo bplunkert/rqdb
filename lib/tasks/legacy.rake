@@ -4,7 +4,7 @@ namespace :legacy do
     require 'mysql2'
     require 'optparse'
 
-    options = {'tableprefix' = 'rash'}
+    options = {'tableprefix': 'rash'}
 
     o = OptionParser.new do |opts|
       opts.banner = 'Usage: rake legacy:migrate_database [options]'
@@ -25,19 +25,19 @@ namespace :legacy do
 
     legacy_mysql = Mysql2::Client.new({:host => options['host'], :username => options['username'], :database => options['database'], :password => options['password']})
 
-    legacy_news   = legacy_mysql.query("SELECT * FROM #{options[:tableprefix}_news")
-    legacy_queue  = legacy_mysql.query("SELECT * FROM #{options[:tableprefix}_queue")
-    legacy_quotes = legacy_mysql.query("SELECT * FROM #{options[:tableprefix}_quotes")
+    legacy_news   = legacy_mysql.query("SELECT * FROM #{options[:tableprefix]}_news")
+    legacy_queue  = legacy_mysql.query("SELECT * FROM #{options[:tableprefix]}_queue")
+    legacy_quotes = legacy_mysql.query("SELECT * FROM #{options[:tableprefix]}_quotes")
 
     legacy_news.each do |legacy_announcement|
       puts "Migrating legacy announcement #{legacy_announcement['id']}"
-      announcement = Announcement.new(text: legacy_announcement['news'], created_at: Time.at(legacy_quote['date'])
+      announcement = Announcement.new(text: legacy_announcement['news'], created_at: Time.at(legacy_quote['date']))
       announcement.save
     end
 
     legacy_queue.each do |legacy_quote|
       puts "Migrating legacy queued quote #{legacy_quote['id']}"      
-      quote = Quote.new(text: legacy_quote['quote'], created_at: Time.at(legacy_quote['date'])
+      quote = Quote.new(text: legacy_quote['quote'], created_at: Time.at(legacy_quote['date']))
       quote.save
     end
 
@@ -49,7 +49,7 @@ namespace :legacy do
         else
           false
         end
-      quote = Quote.new(text: legacy_quote['quote'], score: legacy_quote['rating'], flagged: legacy_quote['flag'], approved: true, created_at: Time.at(legacy_quote['date'])
+      quote = Quote.new(text: legacy_quote['quote'], score: legacy_quote['rating'], flagged: legacy_quote['flag'], approved: true, created_at: Time.at(legacy_quote['date']))
       quote.save
     end
 
