@@ -39,11 +39,11 @@
 				<%= render 'layouts/navbar' %>
 			</div>
 			<div class="row">
-				<div class="col-md-1"></div>						
-				<div class="col-md-10" id="versionbar">
-					RQDB Version: <%= Rails.configuration.version %>
-				</div>
+				<div class="col-md-1"></div>		
+				<div class="col-md-5" id="tickerbar"><%= Quote.where(approved: false).count %> quotes submitted; <%= Quote.where(approved: true).count %> quotes approved</div>
+				<div class="col-md-5" id="versionbar">RQDB Version: <%= Rails.configuration.version %></div>
 				<div class="col-md-1"></div>
 			</div>
+		</div>
 	</body>
 </html>
