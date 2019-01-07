@@ -23,6 +23,13 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
+  test 'should store user IP address when creating quote' do
+    post quotes_url, params: { quote: { text: 'this is a unique quote guaranteed not to be in any fixtures' } }
+    sign_in users(:one)    
+    post search_url, params: { pattern: 'this is a unique quote guaranteed not to be in any fixtures' }
+    assert_match(/Submitter IP: 127\.0\.0\.1/, response.parsed_body)
+  end
+
   test 'should show quote' do
     get quote_url(@quote)
     assert_response :success
@@ -97,4 +104,14 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to quote_url(@quote)
   end
 
+  test 'unauthenticated user should not see submitter IPs for quotes' do
+    get quote_url(@quote)
+    assert_no_match(/Submitter IP:/, response.parsed_body)
+  end
+
+  test 'authenticated user should see submitter IPs for quotes' do
+    sign_in users(:one)    
+    get quote_url(@quote)
+    assert_match(/Submitter IP: 255\.255\.255\.255/, response.parsed_body)
+  end
 end
