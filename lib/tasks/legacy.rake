@@ -4,7 +4,7 @@ namespace :legacy do
     require 'mysql2'
     require 'optparse'
 
-    options = {}
+    options = {'tableprefix' = 'rash'}
 
     o = OptionParser.new do |opts|
       opts.banner = 'Usage: rake legacy:migrate_database [options]'
@@ -13,6 +13,7 @@ namespace :legacy do
       opts.on('-d DATABASE', '--database DATABASE') { |database| options['database'] = database }
       opts.on('-u USERNAME', '--username USERNAME') { |username| options['username'] = username }      
       opts.on('-p PASSWORD', '--password PASSWORD') { |password| options['password'] = password }
+      opts.on('-t TABLEPREFIX', '--tableprefix TABLEPREFIX') { |tableprefix| options['tableprefix'] = tableprefix }
       opts.on_tail('--help', 'Show this message') do
         puts opts
         exit
@@ -24,13 +25,13 @@ namespace :legacy do
 
     legacy_mysql = Mysql2::Client.new({:host => options['host'], :username => options['username'], :database => options['database'], :password => options['password']})
 
-    legacy_news   = legacy_mysql.query('SELECT * FROM rash_news')
-    legacy_queue  = legacy_mysql.query('SELECT * FROM rash_queue')
-    legacy_quotes = legacy_mysql.query('SELECT * FROM rash_quotes')
+    legacy_news   = legacy_mysql.query("SELECT * FROM #{options[:tableprefix}_news")
+    legacy_queue  = legacy_mysql.query("SELECT * FROM #{options[:tableprefix}_queue")
+    legacy_quotes = legacy_mysql.query("SELECT * FROM #{options[:tableprefix}_quotes")
 
     legacy_news.each do |legacy_announcement|
       puts "Migrating legacy announcement #{legacy_announcement['id']}"
-      announcement = Announcement.new(text: legacy_announcement['news'], created_at Time.at(legacy_quote['date'])
+      announcement = Announcement.new(text: legacy_announcement['news'], created_at: Time.at(legacy_quote['date'])
       announcement.save
     end
 
