@@ -68,4 +68,13 @@ class AnnouncementsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to announcements_url
   end
+
+  test 'should offer JSON endpoints' do
+    get '/index.json'
+    assert_response :success
+    assert JSON.parse(response.body)
+    get "/announcements/#{@announcement.id}.json"
+    assert_response :success
+    assert JSON.parse(response.body)    
+  end
 end

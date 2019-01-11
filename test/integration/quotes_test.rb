@@ -5,9 +5,11 @@ class QuotesTest < ActionDispatch::IntegrationTest
   test 'unauthenticated user should not see unapproved quote submitted by another user' do
     q = Quote.new(text: 'this is a unique quote guaranteed not to be in any fixtures')
     q.save
-    get "/quotes/#{q.id}"
-    assert_no_match(/this is a unique quote guaranteed not to be in any fixtures/, response.parsed_body)
-    assert_match(/Quote ##{q.id} is pending approval\./, response.parsed_body)
+    ["/quotes/#{q.id}", "/quotes/#{q.id}.json", '/bottom.json', '/latest.json', '/random.json', '/random1.json', '/top.json'].each do |endpoint|
+      get endpoint
+      assert_no_match(/this is a unique quote guaranteed not to be in any fixtures/, response.body, "Failure: found unapproved quote at #{endpoint}")
+      assert_match(/Quote ##{q.id} is pending approval\./, response.body) unless endpoint =~ /json/
+    end
   end
 
   test 'authenticated user should see unapproved quote submitted by any user' do

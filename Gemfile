@@ -63,6 +63,7 @@ group :test do
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
   gem 'w3c_validators'
+  gem 'json-schema'
 end
 
 group :legacy_migration, optional: true do
