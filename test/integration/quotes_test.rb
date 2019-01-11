@@ -41,8 +41,9 @@ class QuotesTest < ActionDispatch::IntegrationTest
 
     assert_equal(results.errors.length, 0)
 
-    expected_quotes = Quote.order('id ASC').limit(5)
-    assert_match(/#{expected_quotes}/, response.parsed_body)
+    expected_quotes = Quote.where(approved: true).order('id DESC').limit(5).each do |quote|
+      assert_match(/#{quote.text}/, response.parsed_body)
+    end
 
   end
 end

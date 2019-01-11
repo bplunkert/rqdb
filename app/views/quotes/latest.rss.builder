@@ -7,7 +7,7 @@ xml.rss :version => '2.0', 'xmlns:atom' => 'http://www.w3.org/2005/Atom' do
     xml.link root_url
     xml.language 'en'
     xml.tag! 'atom:link', :rel => 'self', :type => 'application/rss+xml', :href => './latest.rss'
-    for quote in @quotes
+    @quotes.each do |quote|
       xml.item do
         xml.id quote.id
         xml.score quote.score
