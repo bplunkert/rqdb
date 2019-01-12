@@ -56,11 +56,11 @@ namespace :legacy do
       legacy_users_table                     = parse_php_config('rashusers')
       legacy_votes_table                     = nil
 
-      dbhost                                 = parse_php_config('hostspec')
+      dbhost                                 = parse_php_config('hostname')
       dbsocket                               = parse_php_config('socket')
-      dbname                                 = parse_php_config('database')
+      dbname                                 = parse_php_config('dbname')
       dbusername                             = parse_php_config('username')
-      dbpassword                             = parse_php_config('password')
+      dbpassword                             = parse_php_config('dbpassword')
     when '2.0_BETA'
       legacy_news_table                      = 'rash_news'
       legacy_queue_table                     = 'rash_queue'
