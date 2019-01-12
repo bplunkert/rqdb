@@ -4,9 +4,9 @@ services:
     image: postgres
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
-  discordbot:
+  chatbot:
     image: web
-    command: bash -c "bundle exec rake chatbot:discord"
+    command: bash -c "bundle exec rake chatbot:all"
     depends_on:
       - db
   web:

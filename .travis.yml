@@ -8,7 +8,7 @@ services:
   - docker
 install:
   - docker-compose build web
-  - docker-compose build discordbot
+  - docker-compose build chatbot
 script:
   - docker-compose run web sh -c 'cd /rqdb && bundle install && bundle exec rake test'
 deploy:
