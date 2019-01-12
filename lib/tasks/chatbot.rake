@@ -1,4 +1,8 @@
 namespace :chatbot do
+  desc 'Run all chatbots'
+  task all: [:environment, 'chatbot:discord'] do
+  end
+
   desc 'Run discord chatbots'
   task discord: :environment do
 
