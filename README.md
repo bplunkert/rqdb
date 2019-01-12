@@ -7,30 +7,51 @@ Rash/Rails Quote Database is a simple web application for publishing, sharing, a
 
 ## Installation
 ### Depedendencies:
-Install [RVM](https://rvm.io) and Ruby 2.5.1:
-* ```curl -sSL https://rvm.io/mpapis.asc | gpg --import -```
-* ```curl -sSL https://get.rvm.io | bash -s stable --ruby=2.5.1```
+Install [RVM](https://rvm.io) and Ruby 2.6.0:
+```curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+curl -sSL https://get.rvm.io | bash -s stable --ruby=2.6.0```
 
 Install bundled ruby gems:
-* ```bundle install```
-* Note: if bundle install fails due to postgres errors, you can safely skip this for development and testing by running: ```bundle install --without production```
+```bundle install```
 
 ### Main Installation:
-* ```bundle exec rake db:migrate```
-* ```bundle exec rake db:seed```
+```bundle exec rake db:migrate && bundle exec rake db:seed```
 
 ### Migration from older PHP versions of Rash:
-This step will connect to a legacy Rash MySQL database and copy all existing data into the  Currently only Rash 2.0 Beta version is supported. A MySQL client will be required. The example installs into the production database but set RAILS_ENV and other options as needed.
-* ```bundle install --with legacy_migration```
-* ```RAILS_ENV=production bundle exec rake legacy:migrate_database --host SERVER --username USERNAME --database DATABASE --password PASSWORD```
+This task will copy data from legacy PHP versions of Rash into the new Rash/Rails database. Only legacy MySQL databases are supported, and a MySQL client is required. All database settings are automatically detected by reading a configuration file --configfile from the legacy Rash installation.
+
+This example installs into the production database, but set RAILS_ENV and other options as needed:
+```bundle install --with legacy_migration
+RAILS_ENV=production bundle exec rake legacy:migrate_database --configfile CONFIGFILE```
 
 For more options, you can pass the --help flag:
-```bundle exec rake legacy:migrate_database --help```
+```RAILS_ENV=production bundle exec rake legacy:migrate_database --help```
+
+When you're sure you are ready to run the migration, pass the --write flag:
+```RAILS_ENV=production bundle exec rake legacy:migrate_database --configfile CONFIGFILE```
 
 ### Start the service:
-* ```bundle exec rails server```
+```bundle exec rails server```
+
+### Start the chatbots (if applicable):
+```bundle exec rake chatbot:all```
 
 ### Login:
 * Browse to http://localhost:3000
 * Default username: admin@admin.admin
 * Default password: password
+
+## Docker
+### Build
+Build the web and database images:
+```docker-compose build web```
+
+Build the chatbot image:
+```docker-compose build chatbot```
+
+### Run
+Run the web and database containers:
+```docker-compose run web```
+
+Run the chatbot container:
+```docker-compose run chatbot```
