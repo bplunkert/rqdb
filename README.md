@@ -8,8 +8,10 @@ Rash/Rails Quote Database is a simple web application for publishing, sharing, a
 ## Installation
 ### Depedendencies:
 Install [RVM](https://rvm.io) and Ruby 2.6.0:
-```curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-curl -sSL https://get.rvm.io | bash -s stable --ruby=2.6.0```
+```
+curl -sSL https://rvm.io/mpapis.asc | gpg --import -
+curl -sSL https://get.rvm.io | bash -s stable --ruby=2.6.0
+```
 
 Install bundled ruby gems:
 ```bundle install```
@@ -21,8 +23,10 @@ Install bundled ruby gems:
 This task will copy data from legacy PHP versions of Rash into the new Rash/Rails database. Only legacy MySQL databases are supported, and a MySQL client is required. All database settings are automatically detected by reading a configuration file --configfile from the legacy Rash installation.
 
 This example installs into the production database, but set RAILS_ENV and other options as needed:
-```bundle install --with legacy_migration
-RAILS_ENV=production bundle exec rake legacy:migrate_database --configfile CONFIGFILE```
+```
+bundle install --with legacy_migration
+RAILS_ENV=production bundle exec rake legacy:migrate_database --configfile CONFIGFILE
+```
 
 For more options, you can pass the --help flag:
 ```RAILS_ENV=production bundle exec rake legacy:migrate_database --help```
