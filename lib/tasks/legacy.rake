@@ -65,9 +65,9 @@ namespace :legacy do
       legacy_news_table                      = 'rash_news'
       legacy_queue_table                     = 'rash_queue'
       legacy_quotes_table                    = 'rash_quotes'
-      legacy_quotes_flag_column              = 'flag'
+      legacy_quotes_flag_fi eld              = 'flag'
       legacy_quotes_flag_field_flagged_value = '1'
-      legacy_users_table.                    = 'rash_users'
+      legacy_users_table                     = 'rash_users'
       legacy_votes_table                     = 'rash_tracking'
 
       dbhost                                 = parse_php_config('hostspec')
