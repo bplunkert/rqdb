@@ -64,6 +64,7 @@ group :test do
   gem 'chromedriver-helper'
   gem 'w3c_validators'
   gem 'json-schema'
+  gem 'coveralls', require: false
 end
 
 group :legacy_migration, optional: true do
