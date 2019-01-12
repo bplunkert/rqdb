@@ -16,4 +16,5 @@ class AdminController < ApplicationController
   def submitted
     @quotes = Quote.where(approved: false).order(created_at: :asc).page(params[:page])    
   end
+
 end

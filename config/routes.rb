@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   scope "/admin" do
+    resources :chatbots
     resources :users
   end
 

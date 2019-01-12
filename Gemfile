@@ -83,3 +83,6 @@ gem 'kaminari'
 
 # Use devise gem for authentication
 gem 'devise'
+
+# Gems for chat bots
+gem 'discordrb'
