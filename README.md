@@ -44,7 +44,8 @@ RAILS_ENV=production bundle exec rake legacy:migrate_database --configfile CONFI
 
 ### Start the service:
 ```
-bundle exec rails server```
+bundle exec rails server
+```
 
 ### Start the chatbots (if applicable):
 ```
