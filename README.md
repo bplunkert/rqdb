@@ -14,10 +14,14 @@ curl -sSL https://get.rvm.io | bash -s stable --ruby=2.6.0
 ```
 
 Install bundled ruby gems:
-```bundle install```
+```
+bundle install
+```
 
 ### Main Installation:
-```bundle exec rake db:migrate && bundle exec rake db:seed```
+```
+bundle exec rake db:migrate && bundle exec rake db:seed
+```
 
 ### Migration from older PHP versions of Rash:
 This task will copy data from legacy PHP versions of Rash into the new Rash/Rails database. Only legacy MySQL databases are supported, and a MySQL client is required. All database settings are automatically detected by reading a configuration file --configfile from the legacy Rash installation.
@@ -29,16 +33,23 @@ RAILS_ENV=production bundle exec rake legacy:migrate_database --configfile CONFI
 ```
 
 For more options, you can pass the --help flag:
-```RAILS_ENV=production bundle exec rake legacy:migrate_database --help```
+```
+RAILS_ENV=production bundle exec rake legacy:migrate_database --help
+```
 
 When you're sure you are ready to run the migration, pass the --write flag:
-```RAILS_ENV=production bundle exec rake legacy:migrate_database --configfile CONFIGFILE```
+```
+RAILS_ENV=production bundle exec rake legacy:migrate_database --configfile CONFIGFILE```
+```
 
 ### Start the service:
-```bundle exec rails server```
+```
+bundle exec rails server```
 
 ### Start the chatbots (if applicable):
-```bundle exec rake chatbot:all```
+```
+bundle exec rake chatbot:all
+```
 
 ### Login:
 * Browse to http://localhost:3000
@@ -48,14 +59,22 @@ When you're sure you are ready to run the migration, pass the --write flag:
 ## Docker
 ### Build
 Build the web and database images:
-```docker-compose build web```
+```
+docker-compose build web
+```
 
 Build the chatbot image:
-```docker-compose build chatbot```
+```
+docker-compose build chatbot
+```
 
 ### Run
 Run the web and database containers:
-```docker-compose run web```
+```
+docker-compose run web
+```
 
 Run the chatbot container:
-```docker-compose run chatbot```
+```
+docker-compose run chatbot
+```
