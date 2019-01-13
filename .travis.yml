@@ -3,17 +3,5 @@ cache:
   bundler: true
   directories:
     - "/home/travis/.rvm/"
-    - "/var/lib/docker"
-services:
-  - docker
-install:
-  - docker-compose build web
-  - docker-compose build chatbot
 script:
-  - docker-compose run web sh -c 'cd /rqdb && bundle install && bundle exec rake test'
-deploy:
-  provider: heroku
-  on:
-    all_branches: true
-  api_key:
-    secure: jDJXB7+v8zNuZafuwf7afvZR6ds8MaspHnfjDD2A+/bbZRvXqKGuBzDPnd8XitEJCcQCplCgksXBTMfXUBxMfROOtsvH9S0LQKO0YtnXWSKg/p4KA+1Jpb9bAPOEI64yl25oY0HbH1h1yvGrGCM97YYe2xeYQtOe3iKk54o3q+EbSBIS+FZuMTmJ4EGCgbt+1lDLVeWTtN+h091qBEi06aPQi9RTR1kM7wQzVEUxo3XI2KEH/kcwwTvy8T9zsf6f0ntdcMK9grk0XiWxm4f/MTJGqxGXKF2IXVJsXDzovoSrGb9daVWUzlEhHb+eyCnmadbqUEKWJNHDotZcA/VR84jWdP+mJkgVBqzIjw/YboDdnnJ2H3/8VTOo6yoP0QsF5c2+id7+bLhagUIVOEZ9QRf/jFQP9NjZ/2EG2t0X22FOEDLZK6sYzaMiE6oGzG0rqMPuy4I5QJAPaKBzZAv8Bgl+VNL06yuj6AyKJJWwLo7X+f/90iRomJ/6MTvtVBw1gsFc9YRy4evOF8aliHnSvSlSt2et1oq9X1WaSWambmZrGbz34Cbe8/o1MfsIePICALcWrP5OevTNsvg0xgUBnjQYtrlJs6ZRscfHWAFH5G09cgcjLaOHsAFyky9Fvv2BBFHiQad+qOIegPIbSy3+X5NLxvYk8g3izDRhQY4u59I=
+  - bundle exec rake test'
