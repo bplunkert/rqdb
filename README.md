@@ -1,7 +1,7 @@
 # RQDB: Rash Quote Database
 [![Build Status](https://travis-ci.org/bplunkert/rqdb.svg?branch=development)](https://travis-ci.org/bplunkert/rqdb)
 [![Heroku Status](https://heroku-badge.herokuapp.com/?app=rqdb)](https://rqdb.herokuapp.com)
-[![Coverage Status](https://coveralls.io/repos/github/bplunkert/rqdb/badge.svg?branch=master)](https://coveralls.io/github/bplunkert/rqdb?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/bplunkert/rqdb/badge.svg?branch=development)](https://coveralls.io/github/bplunkert/rqdb?branch=development)
 
 ## Introduction:
 Rash/Rails Quote Database is a simple web application for publishing, sharing, and ranking quotes. It's a ground-up rebuild of the [Rash Quote Management System (RQMS)](http://rqms.sourceforge.net), originally written in PHP by Tom Cuchta. RQDB is written in Ruby on Rails instead of PHP and does not share any common code with the original version.
