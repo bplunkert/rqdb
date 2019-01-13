@@ -3,5 +3,7 @@ cache:
   bundler: true
   directories:
     - "/home/travis/.rvm/"
+install:
+  - bundle install
 script:
   - bundle exec rake test'
