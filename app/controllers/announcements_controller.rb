@@ -8,8 +8,8 @@ class AnnouncementsController < ApplicationController
     @announcements = Announcement.order(created_at: :desc).page(params[:page])
   end
 
-  # GET /quotes/1
-  # GET /quotes/1.json
+  # GET /announcements/1
+  # GET /announcements/1.json
   def show
     @announcements = [@announcement]
   end
