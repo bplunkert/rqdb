@@ -1,0 +1,27 @@
+<%= form_with(model: chatbot, local: true) do |form| %>
+  <% if chatbot.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(chatbot.errors.count, "error") %> prohibited this chatbot from being saved:</h2>
+
+      <ul>
+      <% chatbot.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :app %>    
+    <%= select_tag('chatbot[app]', options_for_select([['Discord','Discord']])) %>
+  </div>
+
+  <div class="field">
+    <%= form.label :token %>
+    <%= form.text_field :token %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

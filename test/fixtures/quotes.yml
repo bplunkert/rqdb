@@ -12,3 +12,10 @@ two:
   flagged: true
   score: 0
   submitterip: 255.255.255.255 
+
+three:
+  id: 3
+  text: MyString3
+  score: 5
+  submitterip: 255.255.255.255
+  approved: true

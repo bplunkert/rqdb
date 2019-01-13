@@ -3,10 +3,12 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   scope "/admin" do
+    resources :chatbots
     resources :users
   end
 
   root to: 'announcements#index'
+  get 'index.json', to: 'announcements#index'
 
   get 'admin',        to: 'admin#index'
   get 'bottom',       to: 'quotes#bottom'  
@@ -20,7 +22,12 @@ Rails.application.routes.draw do
   get 'submitted',    to: 'admin#submitted'
   get 'top',          to: 'quotes#top'
 
-  resources :announcements
+  resources :announcements do
+    member do
+      get :index
+      get :show
+    end
+  end
 
   resources :quotes do
     member do

@@ -1,0 +1,7 @@
+<h2>Chatbots</h2>
+<% @chatbots.each do |chatbot| %>
+	<%= render 'show', chatbot: chatbot %>
+<% end %>
+
+<h3>Create Chatbot</h3>
+<%= render 'form', chatbot: @chatbot %>

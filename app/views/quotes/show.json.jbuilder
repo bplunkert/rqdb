@@ -1,1 +1,1 @@
-json.partial! "quotes/show", quote: @quote
+json.partial! "quotes/quote", quote: @quote

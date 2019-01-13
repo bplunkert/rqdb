@@ -1,3 +1,7 @@
 <% @quotes.each do |quote| -%>
-<%= render 'quotes/show', :quote => quote %>
+<%   if quote.approved == true or user_signed_in? or quote.submitterip == request.ip -%>
+<%=    render 'quotes/show', :quote => quote %>
+<%   else -%>
+<%=    "Quote ##{quote.id} is pending approval." %>
+<%   end -%>
 <% end -%>

@@ -85,7 +85,7 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     end
 
     get '/random'
-    assert_select "pre", {:class => "quote_output", :count=>0}
+    assert_select "pre", {class: 'quote_output', count: 0}
     assert_response :success
   end
 
@@ -114,4 +114,13 @@ class QuotesControllerTest < ActionDispatch::IntegrationTest
     get quote_url(@quote)
     assert_match(/Submitter IP: 255\.255\.255\.255/, response.parsed_body)
   end
+
+  test 'should offer JSON endpoints' do
+    ['/latest.json', '/random.json', '/random1.json', '/bottom.json', '/top.json', "/quotes/#{@quote.id}.json"].each do |endpoint|
+      get endpoint
+      assert_response :success
+      assert JSON.parse(response.body)
+    end
+  end
+
 end

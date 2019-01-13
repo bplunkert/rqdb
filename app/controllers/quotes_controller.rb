@@ -121,8 +121,8 @@ class QuotesController < ApplicationController
     @quotes = Quote.where(approved: true).order(created_at: :desc).page(params[:page])
   end
 
-  # GET /quotes/flagged
-  # GET /quotes/flagged.json
+  # GET /quotes/submitted
+  # GET /quotes/submitted.json
   def submitted
     @quotes = Quote.where(approved: false).order(created_at: :asc).page(params[:page])
   end  
@@ -234,6 +234,6 @@ class QuotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quote_params
-      params.require(:quote).permit(:text, :score, :search_pattern)
+      params.require(:quote).permit(:text, :search_pattern)
     end
 end
