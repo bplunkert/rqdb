@@ -53,7 +53,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   # Use sqlite3 as the database for Active Record in development
-  gem 'sqlite3'
+  gem 'sqlite3', '~> 1.4.0'
 end
 
 group :test do
